@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Loamanho Store — Смартфоны в Назрани</title>
+<meta name="description" content="Loamanho Store — Samsung, Xiaomi, iPhone в Назрани. Бронируй онлайн, забирай через час, оплата в магазине.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;1,14..32,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .22s,color .22s;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer;border:none;background:none;outline:none}
+img{display:block;max-width:100%}
+input,textarea,select{font-family:inherit;outline:none}
+:root{
+  --bg:#f5f5f7;--bg2:#ffffff;--bg3:#f0f0f5;--bg4:#e8e8ed;
+  --surface:#ffffff;--border:#d2d2d7;--border2:#e5e5ea;
+  --shadow:0 2px 16px rgba(0,0,0,.06);--shadow-lg:0 8px 40px rgba(0,0,0,.11);
+  --text:#1d1d1f;--text2:#6e6e73;--text3:#aeaeb2;
+  --blue:#0071e3;--btn:#1d1d1f;--btn-t:#fff;
+  --green:#1a8a3e;--green-bg:rgba(26,138,62,.08);--green-bd:rgba(26,138,62,.2);
+  --wa:#25d366;--r:14px;--r-sm:10px;
+}
+[data-theme=dark]{
+  --bg:#111113;--bg2:#1c1c1e;--bg3:#2c2c2e;--bg4:#3a3a3c;
+  --surface:#1c1c1e;--border:#3a3a3c;--border2:#48484a;
+  --shadow:0 2px 20px rgba(0,0,0,.4);--shadow-lg:0 8px 40px rgba(0,0,0,.55);
+  --text:#f5f5f7;--text2:#aeaeb2;--text3:#636366;
+  --blue:#1a84ff;--btn:#f5f5f7;--btn-t:#000;
+  --green:#30d158;--green-bg:rgba(48,209,88,.09);--green-bd:rgba(48,209,88,.25);
+}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+
+/* ── NAV ── */
+.nav{position:sticky;top:0;z-index:200;height:54px;display:flex;align-items:center;padding:0 24px;gap:14px;border-bottom:1px solid var(--border)}
+[data-theme=light] .nav{background:rgba(255,255,255,.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+[data-theme=dark]  .nav{background:rgba(17,17,19,.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+.nav-logo{font-size:17px;font-weight:800;letter-spacing:-.5px;cursor:pointer;white-space:nowrap}
+.nav-logo em{font-style:normal;color:var(--blue)}
+.nav-links{display:flex;gap:2px;flex:1}
+.nl{padding:5px 11px;border-radius:8px;font-size:13px;font-weight:500;color:var(--text2);cursor:pointer;transition:.16s;white-space:nowrap}
+.nl:hover,.nl.on{color:var(--text);background:var(--bg3)}
+.nav-search{position:relative;max-width:280px;flex:1}
+.nav-search input{width:100%;padding:7px 13px 7px 32px;background:var(--bg3);border:1px solid var(--border);border-radius:20px;font-size:13px;color:var(--text);transition:.18s}
+.nav-search input:focus{border-color:var(--blue);background:var(--bg2);box-shadow:0 0 0 3px rgba(0,113,227,.08)}
+.nav-search .sico{position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:13px;pointer-events:none;color:var(--text3)}
+.nav-r{display:flex;align-items:center;gap:6px;margin-left:auto}
+.nav-ico{width:35px;height:35px;border-radius:9px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:15px;transition:.16s;position:relative;cursor:pointer}
+.nav-ico:hover{border-color:var(--blue);color:var(--blue)}
+.nav-badge{position:absolute;top:-4px;right:-4px;background:var(--blue);color:#fff;font-size:9px;font-weight:700;width:15px;height:15px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid var(--bg2)}
+.theme-pill{padding:5px 11px;border-radius:20px;background:var(--bg3);border:1px solid var(--border);font-size:12px;font-weight:500;color:var(--text2);cursor:pointer;transition:.16s;white-space:nowrap}
+.theme-pill:hover{border-color:var(--blue);color:var(--blue)}
+.sdrop{position:absolute;top:calc(100%+4px);left:0;right:0;background:var(--bg2);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-lg);z-index:300;overflow:hidden;display:none}
+.sdrop.open{display:block}
+.sdrop-item{display:flex;align-items:center;gap:10px;padding:9px 13px;cursor:pointer;border-bottom:1px solid var(--border2);transition:.14s}
+.sdrop-item:last-child{border-bottom:none}
+.sdrop-item:hover{background:var(--bg3)}
+.sdrop-item img{width:36px;height:36px;object-fit:contain;background:#fff;border-radius:7px;padding:2px;flex-shrink:0}
+.sdrop-name{font-size:13px;font-weight:500;color:var(--text)}
+.sdrop-price{font-size:12px;color:var(--blue);font-weight:600;margin-top:1px}
+
+/* ── PAGES ── */
+.page{display:none}
+.page.active{display:block}
+.cnt{max-width:1200px;margin:0 auto;padding:0 24px}
+.sec{padding:48px 0}
+.shd{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.stit{font-size:20px;font-weight:700;letter-spacing:-.3px}
+.stit em{font-style:normal;color:var(--blue)}
+.see-all{font-size:13px;color:var(--blue);font-weight:500;cursor:pointer}
+.see-all:hover{text-decoration:underline}
+
+/* ── HERO ── */
+.hero{background:var(--bg2);border-bottom:1px solid var(--border);padding:48px 24px 40px}
+.hero-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 360px;gap:48px;align-items:center}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:4px 12px;border-radius:100px;font-size:11px;font-weight:500;margin-bottom:14px}
+.hero h1{font-size:clamp(28px,4vw,48px);font-weight:800;line-height:1.1;letter-spacing:-.8px;margin-bottom:12px}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.hero-sub{color:var(--text2);font-size:15px;margin-bottom:24px;line-height:1.65;max-width:400px}
+.hero-btns{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:28px}
+.hero-stats{display:flex;gap:28px;padding-top:22px;border-top:1px solid var(--border)}
+.hs-n{font-size:22px;font-weight:800}
+.hs-l{font-size:11px;color:var(--text3);margin-top:1px}
+.hero-img{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hprod{background:var(--bg3);border:1.5px solid var(--border);border-radius:12px;padding:10px;cursor:pointer;transition:.2s;text-align:center}
+.hprod:hover{border-color:var(--blue);transform:translateY(-2px);box-shadow:var(--shadow)}
+.hprod img{width:68px;height:68px;object-fit:contain;margin:0 auto 6px;background:#fff;border-radius:7px;padding:3px}
+.hprod .hp-brand{font-size:10px;color:var(--text3);font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.hprod .hp-name{font-size:11px;font-weight:600;color:var(--text);line-height:1.3;margin:2px 0}
+.hprod .hp-price{font-size:12px;font-weight:700;color:var(--blue)}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:100px;font-size:14px;font-weight:600;cursor:pointer;transition:.18s;font-family:inherit;border:none}
+.btn-sm{padding:7px 14px;font-size:12px}
+.btn-primary{background:var(--btn);color:var(--btn-t)}
+.btn-primary:hover{opacity:.82;transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--text);border:1.5px solid var(--border)}
+.btn-outline:hover{border-color:var(--text);background:var(--bg3)}
+.btn-green{background:var(--wa);color:#fff}
+.btn-green:hover{opacity:.88}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{opacity:.88;transform:translateY(-1px)}
+.btn-full{width:100%;justify-content:center}
+
+/* ── INFO STRIP ── */
+.info-strip{background:var(--bg2);border-bottom:1px solid var(--border);padding:9px 24px}
+.info-strip-in{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:center}
+.info-strip a,.info-strip span{font-size:13px;color:var(--text2);display:flex;align-items:center;gap:5px;white-space:nowrap}
+.info-strip a:hover{color:var(--blue)}
+
+/* ── BRAND CHIPS ── */
+.brand-bar{background:var(--bg2);border-bottom:1px solid var(--border);padding:10px 0;overflow:hidden}
+.brand-scroll{display:flex;gap:6px;max-width:1200px;margin:0 auto;padding:0 24px;overflow-x:auto;scrollbar-width:none}
+.brand-scroll::-webkit-scrollbar{display:none}
+.bchip{padding:5px 13px;border:1.5px solid var(--border);border-radius:100px;font-size:12px;font-weight:500;color:var(--text2);cursor:pointer;white-space:nowrap;transition:.16s;flex-shrink:0}
+.bchip:hover,.bchip.on{border-color:var(--blue);color:var(--blue);background:rgba(0,113,227,.05)}
+
+/* ── CATS ── */
+.cats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+.cat-card{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r);padding:18px 14px;text-align:center;cursor:pointer;transition:.2s}
+.cat-card:hover{border-color:var(--blue);transform:translateY(-3px);box-shadow:var(--shadow)}
+.cat-icon{font-size:28px;margin-bottom:8px}
+.cat-name{font-weight:600;font-size:14px}
+.cat-cnt{font-size:11px;color:var(--text3);margin-top:2px}
+
+/* ── BANNERS ── */
+.banners{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.banner{border-radius:var(--r);padding:24px;cursor:pointer;transition:.2s;position:relative;overflow:hidden}
+.banner:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.bn1{background:linear-gradient(135deg,#0071e3,#004db3)}
+.bn2{background:linear-gradient(135deg,#1d1d1f,#3d3d3f)}
+[data-theme=dark] .bn1{background:linear-gradient(135deg,#004db3,#00338a)}
+.banner h3{font-size:17px;font-weight:700;color:#fff;margin-bottom:5px}
+.banner p{font-size:13px;color:rgba(255,255,255,.7);margin-bottom:12px}
+.banner-deco{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:56px;opacity:.12;pointer-events:none}
+
+/* ── HOW IT WORKS ── */
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.how-card{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r);padding:20px;text-align:center}
+.how-num{width:36px;height:36px;border-radius:50%;background:var(--blue);color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.how-title{font-size:14px;font-weight:600;margin-bottom:6px}
+.how-desc{font-size:13px;color:var(--text2);line-height:1.5}
+
+/* ── PRODUCT GRID ── */
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:13px}
+
+/* ── PRODUCT CARD ── */
+.prod-card{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:.2s;display:flex;flex-direction:column;position:relative}
+.prod-card:hover{border-color:rgba(0,113,227,.4);transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.prod-img-box{background:#fff;display:flex;align-items:center;justify-content:center;height:185px;padding:12px;position:relative;flex-shrink:0;border-bottom:1px solid var(--border2)}
+.prod-img-box img{max-height:155px;max-width:100%;object-fit:contain;width:auto;height:auto;transition:transform .3s;display:block}
+.prod-card:hover .prod-img-box img{transform:scale(1.04)}
+.prod-badges{position:absolute;top:8px;left:8px;display:flex;flex-direction:column;gap:3px;z-index:2}
+.badge{display:inline-block;padding:2px 7px;border-radius:100px;font-size:10px;font-weight:700}
+.badge-new{background:rgba(0,113,227,.1);color:var(--blue);border:1px solid rgba(0,113,227,.2)}
+.badge-hit{background:rgba(255,59,48,.1);color:#d62a1f;border:1px solid rgba(255,59,48,.2)}
+.badge-sale{background:rgba(255,149,0,.1);color:#b06000;border:1px solid rgba(255,149,0,.2)}
+.prod-fav{position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:7px;background:rgba(255,255,255,.9);border:1px solid var(--border);color:var(--text3);font-size:13px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.16s;z-index:2}
+[data-theme=dark] .prod-fav{background:rgba(28,28,30,.88)}
+.prod-fav:hover,.prod-fav.on{color:#e0374b;border-color:rgba(224,55,75,.3)}
+.prod-body{padding:11px 13px 13px;flex:1;display:flex;flex-direction:column}
+.prod-brand{font-size:10px;color:var(--text3);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+.prod-name{font-size:13px;font-weight:600;color:var(--text);line-height:1.35;flex:1;margin-bottom:2px}
+.prod-meta{font-size:11px;color:var(--text3);margin-bottom:6px}
+.prod-stars{font-size:11px;color:#f59e0b;margin-bottom:8px}
+.prod-stars span{color:var(--text3);font-size:10px;margin-left:3px}
+.prod-foot{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:auto}
+.prod-price{font-size:16px;font-weight:800;color:var(--text)}
+.prod-price-old{font-size:11px;color:var(--text3);text-decoration:line-through}
+.add-btn{width:32px;height:32px;border-radius:8px;background:var(--btn);color:var(--btn-t);font-size:18px;display:flex;align-items:center;justify-content:center;transition:.16s;flex-shrink:0;font-weight:300;line-height:1}
+.add-btn:hover{opacity:.78;transform:scale(1.08)}
+
+/* ── CATALOG ── */
+.cat-wrap{display:grid;grid-template-columns:220px 1fr;gap:20px;max-width:1200px;margin:0 auto;padding:26px 24px}
+.sidebar{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r);padding:16px;height:fit-content;position:sticky;top:66px}
+.sb-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.sb-title{font-size:14px;font-weight:700}
+.sb-clear{font-size:12px;color:var(--blue);cursor:pointer}
+.sb-clear:hover{text-decoration:underline}
+.fsec{margin-bottom:18px}
+.fsec h4{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{padding:4px 10px;border:1.5px solid var(--border);border-radius:100px;font-size:11px;font-weight:500;color:var(--text2);cursor:pointer;transition:.14s}
+.chip:hover{border-color:var(--blue);color:var(--blue)}
+.chip.on{background:rgba(0,113,227,.07);border-color:var(--blue);color:var(--blue)}
+.price-row{display:flex;gap:6px;align-items:center}
+.price-inp{width:100%;padding:6px 9px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r-sm);font-size:12px;color:var(--text);transition:.16s}
+.price-inp:focus{border-color:var(--blue)}
+.sort-row{display:flex;align-items:center;gap:9px;margin-bottom:14px;flex-wrap:wrap}
+.sort-sel{padding:7px 11px;background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:13px;color:var(--text);cursor:pointer}
+.sort-sel:focus{border-color:var(--blue)}
+.res-n{font-size:13px;color:var(--text3);margin-left:auto}
+
+/* ── PRODUCT MODAL ── */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.48);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:400;display:flex;align-items:center;justify-content:center;padding:14px;opacity:0;pointer-events:none;transition:.22s}
+.overlay.open{opacity:1;pointer-events:all}
+.modal{background:var(--bg2);border-radius:18px;width:100%;max-width:800px;max-height:90vh;overflow-y:auto;position:relative;transform:translateY(12px);transition:.22s}
+.overlay.open .modal{transform:translateY(0)}
+.mclose{position:absolute;top:12px;right:12px;width:28px;height:28px;border-radius:7px;background:var(--bg3);color:var(--text2);font-size:14px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;transition:.15s}
+.mclose:hover{background:var(--border);color:var(--text)}
+.ppg{display:grid;grid-template-columns:1fr 1fr}
+.pgall{background:#fff;display:flex;align-items:center;justify-content:center;padding:32px 24px;min-height:300px;border-radius:18px 0 0 0}
+.pgall img{max-height:260px;max-width:100%;object-fit:contain;width:auto;height:auto}
+.pinfo{padding:26px 24px;display:flex;flex-direction:column}
+.pib{font-size:10px;color:var(--blue);font-weight:700;text-transform:uppercase;letter-spacing:.7px;margin-bottom:4px}
+.pin{font-size:19px;font-weight:700;letter-spacing:-.3px;margin-bottom:4px;line-height:1.25}
+.psr{display:flex;align-items:center;gap:5px;margin-bottom:10px;font-size:12px}
+.pprice{font-size:28px;font-weight:800;margin-bottom:4px;letter-spacing:-.5px}
+.pclr{font-size:12px;color:var(--text2);margin-bottom:14px}
+.spec-t{width:100%;font-size:12px;margin-bottom:16px}
+.spec-t tr:not(:last-child) td{padding-bottom:8px}
+.spec-t .sl{color:var(--text3);width:100px}
+.spec-t .sv{color:var(--text);font-weight:500}
+.pickup-box{background:var(--bg3);border-radius:var(--r-sm);padding:11px 13px;margin-bottom:10px}
+.pickup-title{font-size:12px;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:5px}
+.pickup-addr{font-size:11px;color:var(--text2);line-height:1.5}
+.pickup-note{display:flex;align-items:center;gap:5px;background:var(--green-bg);border:1px solid var(--green-bd);border-radius:7px;padding:7px 11px;font-size:11px;color:var(--green);font-weight:500;margin-top:8px}
+.pqr{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r-sm);padding:10px;text-align:center;margin-bottom:10px}
+.pqr img{width:80px;height:80px;margin:0 auto 5px;border-radius:6px;background:#fff;padding:3px}
+.pqr p{font-size:10px;color:var(--text3)}
+.pactions{display:flex;flex-direction:column;gap:7px;margin-top:auto;padding-top:12px}
+.pdesc{padding:16px 24px;border-top:1px solid var(--border)}
+.pdesc h4{font-size:13px;font-weight:600;margin-bottom:5px}
+.pdesc p{font-size:13px;color:var(--text2);line-height:1.6}
+
+/* ── CART DRAWER ── */
+.cart-ov{position:fixed;inset:0;background:rgba(0,0,0,.38);z-index:300;opacity:0;pointer-events:none;transition:.22s}
+.cart-ov.open{opacity:1;pointer-events:all}
+.cart-dr{position:fixed;right:0;top:0;bottom:0;width:360px;background:var(--bg2);border-left:1px solid var(--border);z-index:301;display:flex;flex-direction:column;transform:translateX(100%);transition:.26s cubic-bezier(.4,0,.2,1)}
+.cart-dr.open{transform:translateX(0)}
+.cart-hd{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--border)}
+.cart-hd h3{font-size:15px;font-weight:700}
+.cart-x{width:28px;height:28px;border-radius:7px;background:var(--bg3);font-size:13px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text2);transition:.14s}
+.cart-x:hover{background:var(--border)}
+.cart-body{flex:1;overflow-y:auto;padding:12px 14px}
+.cart-item{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border2)}
+.cart-item img{width:58px;height:58px;object-fit:contain;background:#fff;border-radius:8px;padding:3px;flex-shrink:0}
+.ci-info{flex:1;min-width:0}
+.ci-name{font-size:12px;font-weight:600;line-height:1.3;margin-bottom:1px}
+.ci-meta{font-size:10px;color:var(--text3);margin-bottom:6px}
+.qty-r{display:flex;align-items:center;gap:5px}
+.qty-btn{width:22px;height:22px;border-radius:6px;background:var(--bg3);border:1px solid var(--border);font-size:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text);transition:.13s}
+.qty-btn:hover{background:var(--border)}
+.qty-n{font-size:12px;font-weight:600;min-width:16px;text-align:center;color:var(--text)}
+.ci-price{font-size:13px;font-weight:700;color:var(--text);flex-shrink:0}
+.ci-del{color:var(--text3);font-size:13px;cursor:pointer;padding:3px;transition:.13s;margin-top:2px;flex-shrink:0}
+.ci-del:hover{color:#e0374b}
+.cart-ft{padding:12px 16px;border-top:1px solid var(--border)}
+.cart-tr{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.cart-tn{font-size:18px;font-weight:800}
+.cart-empty{text-align:center;padding:48px 16px;color:var(--text3)}
+.ce-ico{font-size:42px;margin-bottom:10px;opacity:.25}
+
+/* ── BOOKING MODAL ── */
+.book-ov{position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:500;display:flex;align-items:center;justify-content:center;padding:14px;opacity:0;pointer-events:none;transition:.22s}
+.book-ov.open{opacity:1;pointer-events:all}
+.book-box{background:var(--bg2);border-radius:18px;width:100%;max-width:480px;max-height:92vh;overflow-y:auto;padding:26px;position:relative}
+.book-title{font-size:18px;font-weight:700;margin-bottom:4px}
+.book-sub{font-size:13px;color:var(--text2);margin-bottom:20px}
+.form-group{margin-bottom:12px}
+.form-label{display:block;font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.4px;margin-bottom:5px}
+.form-input{width:100%;padding:10px 12px;background:var(--bg3);border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:14px;color:var(--text);transition:.16s}
+.form-input:focus{border-color:var(--blue);background:var(--bg2);box-shadow:0 0 0 3px rgba(0,113,227,.07)}
+textarea.form-input{min-height:72px;resize:vertical}
+.cart-summary-box{background:var(--bg3);border-radius:var(--r-sm);padding:11px 13px;font-size:12px;color:var(--text2);margin-bottom:14px}
+.success-wrap{text-align:center;padding:12px 0}
+.succ-ico{font-size:48px;margin-bottom:12px}
+.succ-title{font-size:19px;font-weight:700;margin-bottom:8px}
+.succ-sub{color:var(--text2);font-size:14px;line-height:1.6;margin-bottom:18px}
+.succ-info{background:var(--bg3);border-radius:var(--r-sm);padding:14px;text-align:left;margin-bottom:14px}
+.si-row{display:flex;gap:8px;font-size:13px;margin-bottom:5px}
+.si-row:last-child{margin-bottom:0}
+.si-l{color:var(--text3);width:110px;flex-shrink:0}
+.si-v{color:var(--text);font-weight:500}
+.qr-big{background:var(--bg3);border-radius:var(--r-sm);padding:14px;text-align:center;margin-bottom:14px}
+.qr-big img{width:120px;height:120px;margin:0 auto 7px;border-radius:8px;background:#fff;padding:4px}
+.qr-big p{font-size:12px;color:var(--text2)}
+
+/* ── STORE SECTION ── */
+.store-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden}
+.store-map-block{background:linear-gradient(145deg,#ddeeff,#c2d8f0);display:flex;align-items:center;justify-content:center;min-height:230px;position:relative;overflow:hidden;cursor:pointer;transition:.2s}
+[data-theme=dark] .store-map-block{background:linear-gradient(145deg,#152234,#0d1a2a)}
+.store-map-block:hover{opacity:.9}
+.map-grid-overlay{position:absolute;inset:0;background-image:linear-gradient(rgba(0,113,227,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(0,113,227,.07) 1px,transparent 1px);background-size:32px 32px}
+.mpin-wrap{position:relative;z-index:1;text-align:center}
+.mpin{width:48px;height:48px;background:var(--blue);border-radius:50% 50% 50% 0;transform:rotate(-45deg);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,113,227,.45)}
+.mpin span{transform:rotate(45deg);font-size:18px;display:block}
+.mpin-name{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px}
+.mpin-addr{font-size:11px;color:var(--text2);max-width:160px;line-height:1.4;margin-bottom:10px}
+.store-info-panel{padding:24px}
+.store-info-panel h3{font-size:16px;font-weight:700;margin-bottom:16px}
+.sir{display:flex;gap:9px;align-items:flex-start;margin-bottom:12px}
+.sir-ico{font-size:15px;flex-shrink:0;margin-top:1px}
+.sir-l{font-size:10px;color:var(--text3);font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+.sir-v{font-size:13px;color:var(--text);font-weight:500;margin-top:2px;line-height:1.4}
+.hours-table{width:100%;font-size:12px;margin-top:6px}
+.hours-table td{padding:3px 0;color:var(--text2)}
+.hours-table td:last-child{text-align:right;color:var(--text);font-weight:500}
+.td-closed{color:#d62a1f!important;font-weight:700!important}
+
+/* ── REVIEWS ── */
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.rev-card{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r);padding:16px}
+.rev-hd{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px}
+.rev-name{font-size:13px;font-weight:600}
+.rev-date{font-size:11px;color:var(--text3)}
+.rev-stars{font-size:11px;color:#f59e0b;margin-bottom:5px}
+.rev-text{font-size:13px;color:var(--text2);line-height:1.55}
+
+/* ── FEEDBACK ── */
+.fb-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r);padding:32px;align-items:center}
+.fb-title{font-size:20px;font-weight:700;margin-bottom:9px}
+.fb-sub{color:var(--text2);font-size:13px;line-height:1.65;margin-bottom:16px}
+.contact-pills{display:flex;gap:8px;flex-wrap:wrap}
+.cpill{display:flex;align-items:center;gap:6px;padding:7px 13px;border:1px solid var(--border);border-radius:100px;font-size:13px;color:var(--text);cursor:pointer;transition:.15s}
+.cpill:hover{border-color:var(--blue);background:rgba(0,113,227,.04)}
+
+/* ── PROFILE / ORDERS ── */
+.profile-wrap{max-width:720px;margin:0 auto;padding:36px 24px}
+.profile-hd{display:flex;align-items:center;gap:14px;background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r);padding:18px;margin-bottom:20px}
+.avatar{width:46px;height:46px;border-radius:50%;background:var(--blue);color:#fff;font-size:20px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pname{font-size:16px;font-weight:700}
+.pemail{font-size:13px;color:var(--text3)}
+.order-card{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:12px}
+.order-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.order-id{font-weight:700;color:var(--blue)}
+.status-pill{padding:3px 10px;border-radius:100px;font-size:11px;font-weight:700}
+
+  <div class="nav-search" id="search-wrap">
+    <span class="sico">🔍</span>
+    <input type="text" placeholder="Поиск телефонов..." oninput="doSearch(this.value)">
+    <div class="sdrop" id="sdrop"></div>
+  </div>
+  <div class="nav-r">
+    <button class="theme-pill" id="theme-pill" onclick="toggleTheme()">🌙 Тёмная</button>
+    <div class="nav-ico" onclick="nav('catalog')">♡</div>
+    <div class="nav-ico" onclick="openCart()">
+      🛍<span class="nav-badge" id="cart-badge" style="display:none">0</span>
+    </div>
+    <div class="nav-ico" id="auth-btn" onclick="handleAuth()">🔑</div>
+  </div>
+</nav>
+
+<!-- PAGES -->
+<div id="page-home" class="page active"></div>
+<div id="page-catalog" class="page"></div>
+<div id="page-profile" class="page"></div>
+<div id="page-admin" class="page"></div>
+
+<!-- FOOTER -->
+<footer class="footer" id="main-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">Loamanho<em>.</em></div>
+      <div class="footer-desc">Официальные смартфоны и телефоны в Назрани. Бронируй онлайн — забирай через час. Оплата в магазине.</div>
+      <div style="display:flex;gap:8px;margin-top:4px">
+        <a href="h="color:var(--text3)">Воскресенье — выходной</span></span></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Loamanho Store. Все права защищены.</span>
+
+</div>
+
+<!-- PRODUCT MODAL -->
+<div class="overlay" id="prod-ov" onclick="closeProdBg(event)">
+  <div class="modal" id="prod-modal"></div>
+</div>
+ram:8,storage:256,price:117500,rating:5.0,reviews:28,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-17-pro-max.jpg',
+ desc:'iPhone 17 Pro Max Blue, Dual SIM.'},
+{id:115,brand:'Apple',model:'iPhone 17 Pro Max Silver 256 Gb (E-Sim)',color:'Silver',cat:'smartphone',ram:8,storage:256,price:109000,rating:5.0,reviews:31,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-17-pro-max.jpg',
+ desc:'iPhone 17 Pro Max Silver.'},
+// ── APPLE ACCESSORIES (+1500) ──
+{id:116,brand:'Apple',model:'AirPods 4',color:'White',cat:'accessory',ram:0,storage:0,price:10700,rating:4.8,reviews:87,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/apple-airpods-4.jpg',
+ desc:'AirPods 4 — H2, персональный звук, до 30 часов с кейсом.'},
+{id:117,brand:'Apple',model:'AirPods 4 (с шумоподавлением)',color:'White',cat:'accessory',ram:0,storage:0,price:13800,rating:4.9,reviews:63,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/apple-airpods-4.jpg',
+ desc:'AirPods 4 с ANC — активное шумоподавление, H2.'},
+{id:118,brand:'Apple',model:'AirPods Pro 3 (2025)',color:'White',cat:'accessory',ram:0,storage:0,price:18900,rating:4.9,reviews:112,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/apple-airpods-pro-4.jpg',
+ desc:'AirPods Pro 3 — H3 Chip, ANC нового поколения, Lossless.'},
+{id:119,brand:'Apple',model:'Apple Watch Series 11 46mm SpaceGray M/L',color:'SpaceGray',cat:'accessory',ram:0,storage:0,price:31800,rating:4.8,reviews:54,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/apple-watch-series-10.jpg',
+ desc:'Apple Watch Series 11 — S11 SiP, мониторинг здоровья, Always-On.'},
+{id:120,brand:'Apple',model:'Apple Watch Series 11 46mm SpaceGray S/M',color:'SpaceGray',cat:'accessory',ram:0,storage:0,price:31800,rating:4.8,reviews:47,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/apple-watch-series-10.jpg',
+ desc:'Apple Watch Series 11 46мм, ремень S/M.'},
+{id:121,brand:'Apple',model:'iPad A16 Wi-Fi 128 Gb (Blue)',color:'Blue',cat:'accessory',ram:8,storage:128,price:31300,rating:4.8,reviews:68,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/apple-ipad-2025.jpg',
+ desc:'iPad с чипом A16 — тонкий корпус, 10.9", 12 МП, Wi-Fi 6.'},
+{id:122,brand:'Apple',model:'Adapter 20W USB-C White',color:'White',cat:'accessory',ram:0,storage:0,price:2950,rating:4.6,reviews:39,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/apple-20w-usb-c.jpg',
+ desc:'Оригинальный адаптер Apple 20 Вт для быстрой зарядки iPhone.'},
+
+// ── NOKIA (кнопочные +650) ──
+{id:1,brand:'Nokia',model:'105 TA-1557 DS',color:'Blue',cat:'phone',ram:0,storage:0,price:2250,rating:4.2,reviews:18,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/nokia-105-2023.jpg',
+ desc:'Классический кнопочный телефон с фонариком, FM-радио и долгим зарядом.'},
+{id:2,brand:'Nokia',model:'110 TA-1567 DS',color:'Charcoal',cat:'phone',ram:0,storage:0,price:2640,rating:4.3,reviews:22,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/nokia-110-2023.jpg',
+ desc:'Nokia 110 — встроенные игры, двойная SIM, мощный аккумулятор.'},
+{id:3,brand:'Nokia',model:'150 TA-1582 DS EAC',color:'Blue',cat:'phone',ram:0,storage:0,price:3800,rating:4.4,reviews:9,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/nokia-150-2023.jpg',
+ desc:'Nokia 150 — цветной экран, встроенные игры, фонарик.'},
+
+// ── OLMIO (кнопочные +650) ──
+{id:130,brand:'Olmio',model:'C16',color:'Чёрный',cat:'phone',ram:0,storage:0,price:1700,rating:4.1,reviews:11,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/olmio-c16.jpg',
+ desc:'Olmio C16 — компактный кнопочный телефон, две SIM, фонарик.'},
+{id:131,brand:'Olmio',model:'E29',color:'Чёрный',cat:'phone',ram:0,storage:0,price:2130,rating:4.2,reviews:14,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/olmio-e29.jpg',
+ desc:'Olmio E29 — большие кнопки, громкий динамик, долгое время работы.'},
+{id:132,brand:'Olmio',model:'X03',color:'Чёрно-оранжевый',cat:'phone',ram:0,storage:0,price:2400,rating:4.3,reviews:8,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/olmio-x03.jpg',
+ desc:'Olmio X03 — защищённый корпус, яркая подсветка.'},
+
+// ── PHILIPS (кнопочные +650) ──
+{id:9,brand:'Philips',model:'Xenium X170',color:'Black',cat:'phone',ram:0,storage:0,price:1940,rating:4.1,reviews:14,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/philips-xenium-x170.jpg',
+ desc:'Philips Xenium X170 — аккумулятор 1000 мАч, долгое время ожидания.'},
+{id:10,brand:'Philips',model:'Xenium X175',color:'Black',cat:'phone',ram:0,storage:0,price:2030,rating:4.2,reviews:19,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/philips-xenium-x175.jpg',
+ desc:'Philips Xenium X175 с защитой и длительной работой от батареи.'},
+{id:11,brand:'Philips',model:'Xenium X240',color:'Black',cat:'phone',ram:0,storage:0,price:2540,rating:4.3,reviews:16,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/philips-xenium-x240.jpg',
+ desc:'Philips Xenium X240 — две SIM, аккумулятор 1200 мАч.'},
+{id:12,brand:'Philips',model:'Xenium X280',color:'Black',cat:'phone',ram:0,storage:0,price:3130,rating:4.4,reviews:23,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/philips-xenium-x280.jpg',
+ desc:'Philips Xenium X280 с камерой и батареей 1700 мАч.'},
+{id:13,brand:'Philips',model:'Xenium X600 Раскладушка',color:'Dark Gray',cat:'phone',ram:0,storage:0,price:2880,rating:4.5,reviews:31,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/philips-xenium-x600.jpg',
+ desc:'Стильная раскладушка Philips Xenium X600.'},
+{id:14,brand:'Philips',model:'Xenium X600 Раскладушка',color:'Red',cat:'phone',ram:0,storage:0,price:2880,rating:4.5,reviews:21,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/philips-xenium-x600.jpg',
+ desc:'Philips Xenium X600 Раскладушка в красном цвете.'},
+{id:15,brand:'Philips',model:'Xenium X680 Раскладушка',color:'Dark Gray',cat:'phone',ram:0,storage:0,price:3430,rating:4.6,reviews:17,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/philips-xenium-x680.jpg',
+ desc:'Philips Xenium X680 — металлический корпус, большой аккумулятор.'},
+{id:16,brand:'Philips',model:'Xenium X700',color:'Red',cat:'phone',ram:0,storage:0,price:2980,rating:4.5,reviews:12,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/philips-xenium-x700.jpg',
+ desc:'Philips Xenium X700 Red с докстанцией — заряжай без провода.'},
+{id:17,brand:'Philips',model:'Xenium X718',color:'Black',cat:'phone',ram:0,storage:0,price:2300,rating:4.3,reviews:20,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/philips-xenium-x718.jpg',
+ desc:'Philips Xenium X718 — прочный кнопочный телефон.'},
+{id:18,brand:'Philips',model:'Xenium X718',color:'Red',cat:'phone',ram:0,storage:0,price:2300,rating:4.3,reviews:15,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/philips-xenium-x718.jpg',
+ desc:'Philips Xenium X718 в красном цвете.'},
+{id:19,brand:'Philips',model:'Xenium X900',color:'Black',cat:'phone',ram:0,storage:0,price:4500,rating:4.7,reviews:42,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/philips-xenium-x900.jpg',
+ desc:'Флагман кнопочных Philips Xenium X900 с огромным аккумулятором.'},
+
+// ── REALME (смартфоны +1500) ──
+{id:20,brand:'Realme',model:'Note 60x 4/128',color:'Зелёный',cat:'smartphone',ram:4,storage:128,price:6850,rating:4.2,reviews:34,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/realme-note-60x.jpg',
+ desc:'Realme Note 60x — 6.7", 5000 мАч, камера 32 МП.'},
+{id:21,brand:'Realme',model:'Note 60x 4/128',color:'Чёрный',cat:'smartphone',ram:4,storage:128,price:6950,rating:4.2,reviews:28,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/realme-note-60x.jpg',
+ desc:'Realme Note 60x 4/128 в чёрном.'},
+{id:22,brand:'Realme',model:'Note 70 6/128',color:'Золотой',cat:'smartphone',ram:6,storage:128,price:8450,rating:4.4,reviews:51,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/realme-note-70.jpg',
+ desc:'Realme Note 70 — Helio G91 Ultra, 50 МП, зарядка 45 Вт.'},
+{id:222,brand:'Realme',model:'Note 70 6/128',color:'Чёрный',cat:'smartphone',ram:6,storage:128,price:8450,rating:4.4,reviews:39,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/realme-note-70.jpg',
+ desc:'Realme Note 70 6/128 в чёрном цвете.'},
+{id:23,brand:'Realme',model:'C85 8/256',color:'Фиолетовый',cat:'smartphone',ram:8,storage:256,price:15500,rating:4.5,reviews:67,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/realme-c85.jpg',
+ desc:'Realme C85 — AMOLED, 8 ГБ RAM, 256 ГБ, зарядка 45 Вт.'},
+{id:230,brand:'Realme',model:'C85 Pro 8/256',color:'Фиолетовый',cat:'smartphone',ram:8,storage:256,price:16800,rating:4.6,reviews:42,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/realme-c85.jpg',
+ desc:'Realme C85 Pro — улучшенная версия с Pro-камерой.'},
+{id:231,brand:'Realme',model:'C75 8/256',color:'Чёрный',cat:'smartphone',ram:8,storage:256,price:13000,rating:4.4,reviews:31,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/realme-c75.jpg',
+ desc:'Realme C75 — 5G, 50 МП, 5000 мАч.'},
+
+// ── SAMSUNG (смартфоны +1500) ──
+{id:24,brand:'Samsung',model:'Galaxy A17 4/128',color:'Синий',cat:'smartphone',ram:4,storage:128,price:12200,rating:4.3,reviews:88,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a16.jpg',
+ desc:'Samsung Galaxy A17 — 6.7", тройная камера 50 МП, 5000 мАч.'},
+{id:25,brand:'Samsung',model:'Galaxy A17 4/128',color:'Чёрный',cat:'smartphone',ram:4,storage:128,price:12200,rating:4.3,reviews:72,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a16.jpg',
+ desc:'Samsung Galaxy A17 в чёрном цвете.'},
+{id:240,brand:'Samsung',model:'Galaxy A17 6/128 (Гар.1г)',color:'Серый',cat:'smartphone',ram:6,storage:128,price:13450,rating:4.4,reviews:55,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a16.jpg',
+ desc:'Samsung Galaxy A17 6/128 — расширенная версия, гарантия 1 год.'},
+{id:27,brand:'Samsung',model:'Galaxy A17 8/256 (Гар.1г)',color:'Серый',cat:'smartphone',ram:8,storage:256,price:15950,rating:4.5,reviews:61,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a16.jpg',
+ desc:'Samsung Galaxy A17 8/256 — расширенная версия с большим объёмом памяти.'},
+{id:241,brand:'Samsung',model:'Galaxy A17 8/256 (Гар.1г)',color:'Синий',cat:'smartphone',ram:8,storage:256,price:15950,rating:4.5,reviews:49,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a16.jpg',
+ desc:'Samsung Galaxy A17 8/256 в синем, гарантия.'},
+{id:242,brand:'Samsung',model:'Galaxy A17 8/256 (Гар.1г)',color:'Чёрный',cat:'smartphone',ram:8,storage:256,price:16150,rating:4.5,reviews:44,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a16.jpg',
+ desc:'Samsung Galaxy A17 8/256 в чёрном.'},
+{id:243,brand:'Samsung',model:'Galaxy A26 6/128 5G',color:'Black',cat:'smartphone',ram:6,storage:128,price:17400,rating:4.5,reviews:37,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a26.jpg',
+ desc:'Samsung Galaxy A26 5G — Exynos 1380, AMOLED 120 Гц, 50 МП.'},
+{id:244,brand:'Samsung',model:'Galaxy A26 8/256 5G',color:'Black',cat:'smartphone',ram:8,storage:256,price:19300,rating:4.6,reviews:29,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a26.jpg',
+ desc:'Samsung Galaxy A26 5G 8/256 — флагманские функции в среднем классе.'},
+{id:30,brand:'Samsung',model:'Galaxy A56 8/256 (Гар.1г)',color:'Olive',cat:'smartphone',ram:8,storage:256,price:29000,rating:4.6,reviews:43,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a56.jpg',
+ desc:'Samsung Galaxy A56 — AMOLED, AI-функции, тройная камера 50 МП.'},
+{id:36,brand:'Samsung',model:'Galaxy S24 8/256 (Гар.1г)',color:'Black',cat:'smartphone',ram:8,storage:256,price:40000,rating:4.7,reviews:201,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s24.jpg',
+ desc:'Samsung Galaxy S24 — Snapdragon 8 Gen 3, компактный флагман 6.2".'},
+{id:38,brand:'Samsung',model:'Galaxy S25 Ultra 12/256 (Гар.1г)',color:'Black',cat:'smartphone',ram:12,storage:256,price:74300,rating:4.9,reviews:267,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s25-ultra.jpg',
+ desc:'Samsung S25 Ultra — S Pen, Snapdragon 8 Elite, камера 200 МП, Galaxy AI.'},
+{id:39,brand:'Samsung',model:'Galaxy S25 Ultra 12/256 (Гар.1г)',color:'Grey',cat:'smartphone',ram:12,storage:256,price:74300,rating:4.9,reviews:198,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s25-ultra.jpg',
+ desc:'Samsung S25 Ultra в сером цвете.'},
+{id:40,brand:'Samsung',model:'Galaxy S26 12/256 (Гар.1г)',color:'Violet',cat:'smartphone',ram:12,storage:256,price:64000,rating:4.9,reviews:89,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s25.jpg',
+ desc:'Samsung Galaxy S26 — флагман 2025 года с AI-функциями нового поколения.'},
+{id:43,brand:'Samsung',model:'Galaxy S26 Ultra 12/512 (Гар.1г)',color:'Violet',cat:'smartphone',ram:12,storage:512,price:97000,rating:5.0,reviews:43,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s25-ultra.jpg',
+ desc:'Samsung Galaxy S26 Ultra — S Pen нового поколения, 200 МП, вершина 2025.'},
+// Samsung accessories
+{id:71,brand:'Samsung',model:'C3Y 65W PD Adapter',color:'Black',cat:'accessory',ram:0,storage:0,price:3490,rating:4.6,reviews:44,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/samsung-45w-pd-adapter.jpg',
+ desc:'Зарядное устройство Samsung 65W PD — быстрая зарядка для любых устройств.'},
+
+// ── TECNO (смартфоны +1500) ──
+{id:47,brand:'Tecno',model:'Spark Go 2 4/128',color:'Green',cat:'smartphone',ram:4,storage:128,price:8300,rating:4.0,reviews:31,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/tecno-spark-go-2.jpg',
+ desc:'Tecno Spark Go 2 — большой экран и батарея 5000 мАч.'},
+{id:48,brand:'Tecno',model:'Spark Go 3 4/128',color:'Black',cat:'smartphone',ram:4,storage:128,price:8450,rating:4.1,reviews:27,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/tecno-spark-go-3.jpg',
+ desc:'Tecno Spark Go 3 — Android 14, быстрая зарядка.'},
+
+// ── HONOR (смартфоны +1500) ──
+{id:140,brand:'Honor',model:'400 5G 12/256',color:'Золотой',cat:'smartphone',ram:12,storage:256,price:29200,rating:4.7,reviews:31,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/honor-400.jpg',
+ desc:'Honor 400 5G — 12 ГБ RAM, 5G, 50 МП AI-камера.'},
+{id:141,brand:'Honor',model:'400 Lite 8/256',color:'Бирюзовый',cat:'smartphone',ram:8,storage:256,price:19200,rating:4.5,reviews:24,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/honor-400-lite.jpg',
+ desc:'Honor 400 Lite — доступный смартфон с 5G и AMOLED-экраном.'},
+{id:142,brand:'Honor',model:'X5c 4/64',color:'Чёрный',cat:'smartphone',ram:4,storage:64,price:7100,rating:4.0,reviews:18,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/honor-x5c.jpg',
+ desc:'Honor X5c — 6.74", 5200 мАч, Android 13.'},
+{id:143,brand:'Honor',model:'X7c 6/128',color:'Зелёный',cat:'smartphone',ram:6,storage:128,price:11100,rating:4.3,reviews:33,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/honor-x7c.jpg',
+ desc:'Honor X7c — Snapdragon 680, 5330 мАч, 48 МП.'},
+{id:144,brand:'Honor',model:'X7c 6/128',color:'Чёрный',cat:'smartphone',ram:6,storage:128,price:11100,rating:4.3,reviews:27,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/honor-x7c.jpg',
+ desc:'Honor X7c в чёрном.'},
+{id:145,brand:'Honor',model:'X8d 8/128',color:'Серый',cat:'smartphone',ram:8,storage:128,price:16000,rating:4.5,reviews:22,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/honor-x8d.jpg',
+ desc:'Honor X8d — 6.8", AMOLED 90 Гц, Dimensity 6080.'},
+{id:146,brand:'Honor',model:'X9d 8/256',color:'Grey',cat:'smartphone',ram:8,storage:256,price:23800,rating:4.6,reviews:17,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/honor-x9d.jpg',
+ desc:'Honor X9d — тонкий корпус, 108 МП, 5800 мАч.'},
+
+// ── XIAOMI (смартфоны +1500) ──
+{id:49,brand:'Xiaomi',model:'POCO C85 6/128',color:'Black',cat:'smartphone',ram:6,storage:128,price:9400,rating:4.3,reviews:58,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-c85.jpg',
+ desc:'POCO C85 — Helio G85, экран 90 Гц, батарея 5160 мАч.'},
+{id:50,brand:'Xiaomi',model:'POCO C85 6/128',color:'Purple',cat:'smartphone',ram:6,storage:128,price:9600,rating:4.3,reviews:41,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-c85.jpg',
+ desc:'POCO C85 в фиолетовом цвете.'},
+{id:51,brand:'Xiaomi',model:'POCO C85 8/256',color:'Black',cat:'smartphone',ram:8,storage:256,price:10900,rating:4.4,reviews:63,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-c85.jpg',
+ desc:'POCO C85 8/256 — расширенная версия.'},
+{id:510,brand:'Xiaomi',model:'POCO C85 8/256',color:'Green',cat:'smartphone',ram:8,storage:256,price:10900,rating:4.4,reviews:37,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-c85.jpg',
+ desc:'POCO C85 8/256 в зелёном.'},
+{id:54,brand:'Xiaomi',model:'Redmi 15C 8/256',color:'Blue',cat:'smartphone',ram:8,storage:256,price:11100,rating:4.4,reviews:82,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-15c.jpg',
+ desc:'Xiaomi Redmi 15C 8/256 — большой экран, долгая работа.'},
+{id:541,brand:'Xiaomi',model:'Redmi 15C 8/256',color:'Black',cat:'smartphone',ram:8,storage:256,price:11100,rating:4.4,reviews:71,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-15c.jpg',
+ desc:'Xiaomi Redmi 15C 8/256 в чёрном.'},
+{id:542,brand:'Xiaomi',model:'Redmi 15C 8/256',color:'Green',cat:'smartphone',ram:8,storage:256,price:11100,rating:4.4,reviews:58,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-15c.jpg',
+ desc:'Xiaomi Redmi 15C 8/256 в зелёном.'},
+{id:543,brand:'Xiaomi',model:'Redmi 15C 4/128',color:'Black',cat:'smartphone',ram:4,storage:128,price:9050,rating:4.2,reviews:44,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-15c.jpg',
+ desc:'Xiaomi Redmi 15C 4/128 — бюджетный вариант.'},
+{id:544,brand:'Xiaomi',model:'Redmi 15C 4/128',color:'Green',cat:'smartphone',ram:4,storage:128,price:8950,rating:4.2,reviews:38,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-15c.jpg',
+ desc:'Xiaomi Redmi 15C 4/128 в зелёном.'},
+{id:545,brand:'Xiaomi',model:'Redmi 15C 4/256',color:'Blue',cat:'smartphone',ram:4,storage:256,price:9800,rating:4.3,reviews:29,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-15c.jpg',
+ desc:'Xiaomi Redmi 15C 4/256 — больше памяти.'},
+{id:56,brand:'Xiaomi',model:'Redmi Note 14 8/256',color:'Green',cat:'smartphone',ram:8,storage:256,price:15000,rating:4.5,reviews:113,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-14.jpg',
+ desc:'Xiaomi Redmi Note 14 — AMOLED 120 Гц, Helio G99 Ultra, зарядка 33 Вт.'},
+{id:57,brand:'Xiaomi',model:'Redmi Note 14 8/256',color:'Black',cat:'smartphone',ram:8,storage:256,price:15000,rating:4.6,reviews:138,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-14.jpg',
+ desc:'Xiaomi Redmi Note 14 8/256 — мощная версия.'},
+{id:570,brand:'Xiaomi',model:'Redmi Note 15 6/128',color:'Black',cat:'smartphone',ram:6,storage:128,price:14850,rating:4.4,reviews:66,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-15.jpg',
+ desc:'Xiaomi Redmi Note 15 6/128 — AMOLED 120 Гц, долгая работа.'},
+{id:571,brand:'Xiaomi',model:'Redmi Note 15 8/256 (Гар.1г)',color:'Blue',cat:'smartphone',ram:8,storage:256,price:17100,rating:4.5,reviews:78,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-15.jpg',
+ desc:'Xiaomi Redmi Note 15 8/256 Blue — расширенная версия.'},
+{id:572,brand:'Xiaomi',model:'Redmi Note 15 8/256 (Гар.1г)',color:'Black',cat:'smartphone',ram:8,storage:256,price:17100,rating:4.5,reviews:85,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-15.jpg',
+ desc:'Xiaomi Redmi Note 15 8/256 Black.'},
+{id:573,brand:'Xiaomi',model:'Redmi Note 15 8/256 (Гар.1г)',color:'Purple',cat:'smartphone',ram:8,storage:256,price:17100,rating:4.5,reviews:61,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-15.jpg',
+ desc:'Xiaomi Redmi Note 15 8/256 в фиолетовом.'},
+{id:60,brand:'Xiaomi',model:'Redmi Note 15 Pro 8/256',color:'Black',cat:'smartphone',ram:8,storage:256,price:20800,rating:4.8,reviews:156,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-15-pro.jpg',
+ desc:'Redmi Note 15 Pro — Dimensity 8400 Ultra, AMOLED 144 Гц, OIS 50 МП.'},
+{id:61,brand:'Xiaomi',model:'Redmi Note 15 Pro Plus 12/512',color:'Black',cat:'smartphone',ram:12,storage:512,price:33500,rating:4.9,reviews:88,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-15-pro-plus.jpg',
+ desc:'Redmi Note 15 Pro+ — 12 ГБ RAM, 512 ГБ, максимальная версия.'},
+{id:610,brand:'Xiaomi',model:'Redmi Note 15 Pro Plus 8/256',color:'Black',cat:'smartphone',ram:8,storage:256,price:29000,rating:4.8,reviews:54,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-15-pro-plus.jpg',
+ desc:'Redmi Note 15 Pro+ 8/256 — отличное соотношение цена/качество.'},
+{id:611,brand:'Xiaomi',model:'Redmi Note 15 Pro Plus 8/256',color:'Brown',cat:'smartphone',ram:8,storage:256,price:28700,rating:4.8,reviews:41,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-15-pro-plus.jpg',
+ desc:'Redmi Note 15 Pro+ 8/256 в коричневом цвете.'},
+{id:63,brand:'Xiaomi',model:'Redmi A3 Pro 4/128',color:'Black',cat:'smartphone',ram:4,storage:128,price:7000,rating:4.0,reviews:35,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-a3-pro.jpg',
+ desc:'Xiaomi Redmi A3 Pro — доступный смартфон с хорошей автономностью.'},
+{id:64,brand:'Xiaomi',model:'Redmi A3 Pro 4/128',color:'Blue',cat:'smartphone',ram:4,storage:128,price:7000,rating:4.0,reviews:27,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-a3-pro.jpg',
+ desc:'Xiaomi Redmi A3 Pro в синем.'},
+{id:65,brand:'Xiaomi',model:'Redmi A5 4/128',color:'Black',cat:'smartphone',ram:4,storage:128,price:7850,rating:4.1,reviews:42,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-a5.jpg',
+ desc:'Xiaomi Redmi A5 — новейший бюджетник с большой батареей.'},
+{id:650,brand:'Xiaomi',model:'Redmi A5 4/128',color:'Blue',cat:'smartphone',ram:4,storage:128,price:7700,rating:4.1,reviews:38,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-a5.jpg',
+ desc:'Xiaomi Redmi A5 4/128 в синем.'},
+{id:651,brand:'Xiaomi',model:'Redmi A5 4/128',color:'Gold',cat:'smartphone',ram:4,storage:128,price:7700,rating:4.1,reviews:29,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-a5.jpg',
+ desc:'Xiaomi Redmi A5 4/128 в золотом.'},
+{id:652,brand:'Xiaomi',model:'Redmi A5 4/128',color:'Green',cat:'smartphone',ram:4,storage:128,price:7700,rating:4.1,reviews:22,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-a5.jpg',
+ desc:'Xiaomi Redmi A5 4/128 в зелёном.'},
+{id:67,brand:'Xiaomi',model:'Redmi A5 3/64',color:'Black',cat:'smartphone',ram:3,storage:64,price:6700,rating:4.0,reviews:31,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-a5.jpg',
+ desc:'Xiaomi Redmi A5 3/64 — самая доступная версия.'},
+{id:68,brand:'Xiaomi',model:'Redmi A5 3/64',color:'Blue',cat:'smartphone',ram:3,storage:64,price:6600,rating:4.0,reviews:26,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-a5.jpg',
+ desc:'Xiaomi Redmi A5 3/64 в синем.'},
+{id:680,brand:'Xiaomi',model:'Redmi A5 3/64',color:'Gold',cat:'smartphone',ram:3,storage:64,price:6650,rating:4.0,reviews:19,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-a5.jpg',
+ desc:'Xiaomi Redmi A5 3/64 в золотом.'},
+
+// ── BQ — АКСЕССУАРЫ (+1500) ──
+{id:200,brand:'BQ',model:'Аккумулятор для BQ-2432 Tank SE',color:'',cat:'accessory',ram:0,storage:0,price:1850,rating:4.3,reviews:9,isNew:false,sale:0,
+ img:'https://bqmobile.ru/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/b/q/bq-acc-1.jpg',
+ desc:'Оригинальный запасной аккумулятор для BQ-2432 Tank SE.'},
+{id:201,brand:'BQ',model:'C3Y BQ Charger 20W (2×Type-C+USB)',color:'',cat:'accessory',ram:0,storage:0,price:2050,rating:4.4,reviews:14,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-charger-20w.jpg',
+ desc:'Зарядное устройство BQ 20W — 2 порта Type-C + USB, PD+Q.'},
+{id:202,brand:'BQ',model:'C3Y BQ Charger 38W (2×Type-C+USB)',color:'',cat:'accessory',ram:0,storage:0,price:2250,rating:4.5,reviews:11,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-charger-38w.jpg',
+ desc:'Зарядное устройство BQ 38W — быстрая зарядка, PD 2.'},
+{id:203,brand:'BQ',model:'C3Y Maxvi TCM-101LB',color:'',cat:'accessory',ram:0,storage:0,price:1680,rating:4.1,reviews:7,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-tcm.jpg',
+ desc:'Зарядное устройство Maxvi TCM-101LB.'},
+{id:204,brand:'BQ',model:'C3Y Maxvi TCM-200TB',color:'',cat:'accessory',ram:0,storage:0,price:1680,rating:4.1,reviews:6,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-tcm.jpg',
+ desc:'Зарядное устройство Maxvi TCM-200TB.'},
+{id:205,brand:'BQ',model:'C3Y Maxvi TCM-202TB',color:'',cat:'accessory',ram:0,storage:0,price:1700,rating:4.1,reviews:5,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-tcm.jpg',
+ desc:'Зарядное устройство Maxvi TCM-202TB.'},
+
+// ── BQ — КНОПОЧНЫЕ ТЕЛЕФОНЫ (+650) ──
+{id:300,brand:'BQ',model:'1800L One',color:'Black',cat:'phone',ram:0,storage:0,price:2100,rating:4.2,reviews:12,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1800l.jpg',
+ desc:'BQ 1800L One — компактный телефон с фонариком и долгим аккумулятором.'},
+{id:301,brand:'BQ',model:'1842 Tank mini',color:'Black',cat:'phone',ram:0,storage:0,price:2030,rating:4.3,reviews:19,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1842.jpg',
+ desc:'BQ Tank mini — прочный корпус, долгая работа.'},
+{id:302,brand:'BQ',model:'1842 Tank mini',color:'Black+Blue',cat:'phone',ram:0,storage:0,price:2030,rating:4.3,reviews:14,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1842.jpg',
+ desc:'BQ Tank mini в синей расцветке.'},
+{id:303,brand:'BQ',model:'1842 Tank mini',color:'Black+Green',cat:'phone',ram:0,storage:0,price:2030,rating:4.3,reviews:11,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1842.jpg',
+ desc:'BQ Tank mini в зелёной расцветке.'},
+{id:304,brand:'BQ',model:'1846 One Power',color:'Black+Grey',cat:'phone',ram:0,storage:0,price:1640,rating:4.2,reviews:17,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1846.jpg',
+ desc:'BQ 1846 One Power — усиленная батарея.'},
+{id:305,brand:'BQ',model:'1846 One Power',color:'Black+Orange',cat:'phone',ram:0,storage:0,price:1640,rating:4.2,reviews:13,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1846.jpg',
+ desc:'BQ 1846 One Power в оранжевом.'},
+{id:306,brand:'BQ',model:'1846 One Power',color:'White+Red',cat:'phone',ram:0,storage:0,price:1640,rating:4.2,reviews:10,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1846.jpg',
+ desc:'BQ 1846 One Power White+Red.'},
+{id:307,brand:'BQ',model:'1846 One Power',color:'Чёрный+Синий',cat:'phone',ram:0,storage:0,price:1640,rating:4.2,reviews:8,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1846.jpg',
+ desc:'BQ 1846 One Power чёрно-синий.'},
+{id:308,brand:'BQ',model:'1848 Step+',color:'Black',cat:'phone',ram:0,storage:0,price:1520,rating:4.1,reviews:22,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1848.jpg',
+ desc:'BQ 1848 Step+ — удобные клавиши, большой шрифт.'},
+{id:309,brand:'BQ',model:'1848 Step+ (без СЗУ)',color:'Black',cat:'phone',ram:0,storage:0,price:1479,rating:4.1,reviews:15,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1848.jpg',
+ desc:'BQ 1848 Step+ без зарядного устройства.'},
+{id:310,brand:'BQ',model:'1848 Step+',color:'Black+Blue',cat:'phone',ram:0,storage:0,price:1520,rating:4.1,reviews:12,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1848.jpg',
+ desc:'BQ 1848 Step+ Black+Blue.'},
+{id:311,brand:'BQ',model:'1848 Step+',color:'Black+Red',cat:'phone',ram:0,storage:0,price:1520,rating:4.1,reviews:9,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1848.jpg',
+ desc:'BQ 1848 Step+ Black+Red.'},
+{id:312,brand:'BQ',model:'1848 Step+',color:'Red+Black',cat:'phone',ram:0,storage:0,price:1520,rating:4.1,reviews:7,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1848.jpg',
+ desc:'BQ 1848 Step+ Red+Black.'},
+{id:313,brand:'BQ',model:'1848 Step+',color:'White+Blue',cat:'phone',ram:0,storage:0,price:1520,rating:4.1,reviews:6,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1848.jpg',
+ desc:'BQ 1848 Step+ White+Blue.'},
+{id:314,brand:'BQ',model:'1848 Step+',color:'White+Red',cat:'phone',ram:0,storage:0,price:1520,rating:4.1,reviews:8,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1848.jpg',
+ desc:'BQ 1848 Step+ White+Red.'},
+{id:315,brand:'BQ',model:'1848 Step+',color:'Black+Green',cat:'phone',ram:0,storage:0,price:1520,rating:4.1,reviews:5,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1848.jpg',
+ desc:'BQ 1848 Step+ Black+Green.'},
+{id:316,brand:'BQ',model:'1851 Respect',color:'Зелёный',cat:'phone',ram:0,storage:0,price:1810,rating:4.3,reviews:14,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1851.jpg',
+ desc:'BQ 1851 Respect — стильный телефон с удобными клавишами.'},
+{id:317,brand:'BQ',model:'1851 Respect',color:'Красный',cat:'phone',ram:0,storage:0,price:1810,rating:4.3,reviews:11,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1851.jpg',
+ desc:'BQ 1851 Respect в красном.'},
+{id:318,brand:'BQ',model:'1851 Respect',color:'Синий',cat:'phone',ram:0,storage:0,price:1810,rating:4.3,reviews:9,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1851.jpg',
+ desc:'BQ 1851 Respect в синем.'},
+{id:319,brand:'BQ',model:'1851 Respect',color:'Чёрный',cat:'phone',ram:0,storage:0,price:1810,rating:4.3,reviews:16,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1851.jpg',
+ desc:'BQ 1851 Respect в чёрном.'},
+{id:320,brand:'BQ',model:'1853 Life',color:'Black+Green',cat:'phone',ram:0,storage:0,price:1610,rating:4.2,reviews:13,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1853.jpg',
+ desc:'BQ 1853 Life — тонкий, лёгкий, с фонариком.'},
+{id:321,brand:'BQ',model:'1853 Life',color:'Black+Orange',cat:'phone',ram:0,storage:0,price:1610,rating:4.2,reviews:10,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1853.jpg',
+ desc:'BQ 1853 Life Black+Orange.'},
+{id:322,brand:'BQ',model:'1853 Life',color:'Black+Red',cat:'phone',ram:0,storage:0,price:1610,rating:4.2,reviews:8,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1853.jpg',
+ desc:'BQ 1853 Life Black+Red.'},
+{id:323,brand:'BQ',model:'1853 Life',color:'Blue',cat:'phone',ram:0,storage:0,price:1640,rating:4.2,reviews:7,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1853.jpg',
+ desc:'BQ 1853 Life Blue.'},
+{id:324,brand:'BQ',model:'1853 Life',color:'Red+Black',cat:'phone',ram:0,storage:0,price:1610,rating:4.2,reviews:6,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1853.jpg',
+ desc:'BQ 1853 Life Red+Black.'},
+{id:325,brand:'BQ',model:'1853 Life',color:'White',cat:'phone',ram:0,storage:0,price:1610,rating:4.2,reviews:9,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1853.jpg',
+ desc:'BQ 1853 Life White.'},
+{id:326,brand:'BQ',model:'1858 Barrel',color:'Black+Gold',cat:'phone',ram:0,storage:0,price:1630,rating:4.3,reviews:18,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1858.jpg',
+ desc:'BQ 1858 Barrel — прочный металлический корпус.'},
+{id:327,brand:'BQ',model:'1858 Barrel',color:'Black+Silver',cat:'phone',ram:0,storage:0,price:1630,rating:4.3,reviews:14,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1858.jpg',
+ desc:'BQ 1858 Barrel Black+Silver.'},
+{id:328,brand:'BQ',model:'1858 Barrel',color:'Green+Black',cat:'phone',ram:0,storage:0,price:1630,rating:4.3,reviews:11,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1858.jpg',
+ desc:'BQ 1858 Barrel Green+Black.'},
+{id:329,brand:'BQ',model:'1858 Barrel',color:'Purple+Black',cat:'phone',ram:0,storage:0,price:1630,rating:4.3,reviews:8,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1858.jpg',
+ desc:'BQ 1858 Barrel Purple+Black.'},
+{id:330,brand:'BQ',model:'1858 Barrel',color:'Red+Black',cat:'phone',ram:0,storage:0,price:1630,rating:4.3,reviews:7,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1858.jpg',
+ desc:'BQ 1858 Barrel Red+Black.'},
+{id:331,brand:'BQ',model:'1858 Gem (без СЗУ)',color:'Black',cat:'phone',ram:0,storage:0,price:1540,rating:4.1,reviews:12,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1858.jpg',
+ desc:'BQ 1858 Gem — стильный мини-телефон, без ЗУ.'},
+{id:332,brand:'BQ',model:'1860 Gem (без СЗУ)',color:'Dark Blue',cat:'phone',ram:0,storage:0,price:1540,rating:4.1,reviews:10,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1860.jpg',
+ desc:'BQ 1860 Gem Dark Blue — без зарядного устройства.'},
+{id:333,brand:'BQ',model:'1860 Gem (без СЗУ)',color:'Gray',cat:'phone',ram:0,storage:0,price:1540,rating:4.1,reviews:8,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1860.jpg',
+ desc:'BQ 1860 Gem Gray — без зарядного устройства.'},
+{id:334,brand:'BQ',model:'1862 Talk',color:'Зелёный',cat:'phone',ram:0,storage:0,price:1500,rating:4.0,reviews:14,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1862.jpg',
+ desc:'BQ 1862 Talk — бюджетный телефон с чётким звуком.'},
+{id:335,brand:'BQ',model:'1862 Talk',color:'Красный',cat:'phone',ram:0,storage:0,price:1500,rating:4.0,reviews:11,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1862.jpg',
+ desc:'BQ 1862 Talk в красном.'},
+{id:336,brand:'BQ',model:'1862 Talk',color:'Серый',cat:'phone',ram:0,storage:0,price:1500,rating:4.0,reviews:9,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1862.jpg',
+ desc:'BQ 1862 Talk в сером.'},
+{id:337,brand:'BQ',model:'1862 Talk',color:'Синий',cat:'phone',ram:0,storage:0,price:1500,rating:4.0,reviews:12,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1862.jpg',
+ desc:'BQ 1862 Talk в синем.'},
+{id:338,brand:'BQ',model:'1862 Talk',color:'Чёрный',cat:'phone',ram:0,storage:0,price:1500,rating:4.0,reviews:17,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1862.jpg',
+ desc:'BQ 1862 Talk в чёрном.'},
+{id:339,brand:'BQ',model:'1866 Trust',color:'White',cat:'phone',ram:0,storage:0,price:2200,rating:4.4,reviews:9,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1866.jpg',
+ desc:'BQ 1866 Trust White — надёжный телефон с долгой батареей.'},
+{id:340,brand:'BQ',model:'1867 Blues',color:'Серебряный',cat:'phone',ram:0,storage:0,price:2130,rating:4.3,reviews:13,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1867.jpg',
+ desc:'BQ 1867 Blues — металлический корпус, Bluetooth.'},
+{id:341,brand:'BQ',model:'1867 Blues',color:'Синий',cat:'phone',ram:0,storage:0,price:2130,rating:4.3,reviews:10,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1867.jpg',
+ desc:'BQ 1867 Blues в синем.'},
+{id:342,brand:'BQ',model:'1867 Blues',color:'Чёрный',cat:'phone',ram:0,storage:0,price:2130,rating:4.3,reviews:8,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-1867.jpg',
+ desc:'BQ 1867 Blues в чёрном.'},
+{id:343,brand:'BQ',model:'2005 Disco',color:'Black',cat:'phone',ram:0,storage:0,price:2550,rating:4.4,reviews:21,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2005.jpg',
+ desc:'BQ 2005 Disco — яркая подсветка, FM-радио, долгий аккумулятор.'},
+{id:344,brand:'BQ',model:'2005 Disco',color:'Blue',cat:'phone',ram:0,storage:0,price:2550,rating:4.4,reviews:17,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2005.jpg',
+ desc:'BQ 2005 Disco Blue.'},
+{id:345,brand:'BQ',model:'2005 Disco',color:'Cold',cat:'phone',ram:0,storage:0,price:2550,rating:4.4,reviews:13,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2005.jpg',
+ desc:'BQ 2005 Disco Cold.'},
+{id:346,brand:'BQ',model:'2005 Disco',color:'Pink',cat:'phone',ram:0,storage:0,price:2550,rating:4.4,reviews:19,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2005.jpg',
+ desc:'BQ 2005 Disco Pink.'},
+{id:347,brand:'BQ',model:'2005 Disco',color:'Red',cat:'phone',ram:0,storage:0,price:2550,rating:4.4,reviews:11,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2005.jpg',
+ desc:'BQ 2005 Disco Red.'},
+{id:348,brand:'BQ',model:'2006 Comfort',color:'Black',cat:'phone',ram:0,storage:0,price:2750,rating:4.4,reviews:24,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2006.jpg',
+ desc:'BQ 2006 Comfort — крупные клавиши, громкий динамик.'},
+{id:349,brand:'BQ',model:'2006 Comfort',color:'Green+Black',cat:'phone',ram:0,storage:0,price:2750,rating:4.4,reviews:18,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2006.jpg',
+ desc:'BQ 2006 Comfort Green+Black.'},
+{id:350,brand:'BQ',model:'2006 Comfort',color:'Gold+Black',cat:'phone',ram:0,storage:0,price:2750,rating:4.4,reviews:14,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2006.jpg',
+ desc:'BQ 2006 Comfort Gold+Black.'},
+{id:351,brand:'BQ',model:'2006 Comfort',color:'Blue+Black',cat:'phone',ram:0,storage:0,price:2750,rating:4.4,reviews:11,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2006.jpg',
+ desc:'BQ 2006 Comfort Blue+Black.'},
+{id:352,brand:'BQ',model:'2010 Talkie',color:'Black',cat:'phone',ram:0,storage:0,price:4200,rating:4.5,reviews:18,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2010.jpg',
+ desc:'BQ 2010 Talkie — мощная рация в корпусе телефона.'},
+{id:353,brand:'BQ',model:'2010 Talkie',color:'Dark Blue',cat:'phone',ram:0,storage:0,price:4200,rating:4.5,reviews:12,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2010.jpg',
+ desc:'BQ 2010 Talkie Dark Blue.'},
+{id:354,brand:'BQ',model:'2411 Shell',color:'Blue',cat:'phone',ram:0,storage:0,price:2750,rating:4.3,reviews:16,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2411.jpg',
+ desc:'BQ 2411 Shell — компактная раскладушка.'},
+{id:355,brand:'BQ',model:'2411 Shell',color:'Red',cat:'phone',ram:0,storage:0,price:2750,rating:4.3,reviews:12,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2411.jpg',
+ desc:'BQ 2411 Shell Red.'},
+{id:356,brand:'BQ',model:'2412 Shell Duo',color:'Blue',cat:'phone',ram:0,storage:0,price:2930,rating:4.4,reviews:14,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2412.jpg',
+ desc:'BQ 2412 Shell Duo — раскладушка с двумя SIM.'},
+{id:357,brand:'BQ',model:'2412 Shell Duo',color:'Red',cat:'phone',ram:0,storage:0,price:2930,rating:4.4,reviews:11,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2412.jpg',
+ desc:'BQ 2412 Shell Duo Red.'},
+{id:358,brand:'BQ',model:'2430 Tank Power',color:'Black+Gold',cat:'phone',ram:0,storage:0,price:2450,rating:4.5,reviews:28,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2430.jpg',
+ desc:'BQ 2430 Tank Power — 4000 мАч, прочный, мощный фонарик.'},
+{id:359,brand:'BQ',model:'2430 Tank Power',color:'Black+Silver',cat:'phone',ram:0,storage:0,price:2450,rating:4.5,reviews:22,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2430.jpg',
+ desc:'BQ 2430 Tank Power Black+Silver.'},
+{id:360,brand:'BQ',model:'2430 Tank Power',color:'Camouflage+Gold',cat:'phone',ram:0,storage:0,price:2450,rating:4.5,reviews:19,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2430.jpg',
+ desc:'BQ 2430 Tank Power в камуфляже.'},
+{id:361,brand:'BQ',model:'2430 Tank Power',color:'Green+Silver',cat:'phone',ram:0,storage:0,price:2450,rating:4.5,reviews:15,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2430.jpg',
+ desc:'BQ 2430 Tank Power Green+Silver.'},
+{id:362,brand:'BQ',model:'2430L Tank Connect',color:'Black+Gunmetal',cat:'phone',ram:0,storage:0,price:3640,rating:4.6,reviews:22,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2430l.jpg',
+ desc:'BQ 2430L Tank Connect — с рацией, Bluetooth.'},
+{id:363,brand:'BQ',model:'2430L Tank Connect',color:'Camouflage+Gold',cat:'phone',ram:0,storage:0,price:3640,rating:4.6,reviews:17,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2430l.jpg',
+ desc:'BQ 2430L Tank Connect Camouflage+Gold.'},
+{id:364,brand:'BQ',model:'2430L Tank Connect',color:'Camouflage+Gunmetal',cat:'phone',ram:0,storage:0,price:3640,rating:4.6,reviews:13,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2430l.jpg',
+ desc:'BQ 2430L Tank Connect Camouflage+Gunmetal.'},
+{id:365,brand:'BQ',model:'2432 Tank SE',color:'Camouflage',cat:'phone',ram:0,storage:0,price:2450,rating:4.4,reviews:24,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2432.jpg',
+ desc:'BQ 2432 Tank SE — ударопрочный, IP67, 4000 мАч.'},
+{id:366,brand:'BQ',model:'2432 Tank SE',color:'Green',cat:'phone',ram:0,storage:0,price:2450,rating:4.4,reviews:19,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2432.jpg',
+ desc:'BQ 2432 Tank SE Green.'},
+{id:367,brand:'BQ',model:'2439 Bobber',color:'Black',cat:'phone',ram:0,storage:0,price:3450,rating:4.5,reviews:17,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2439.jpg',
+ desc:'BQ 2439 Bobber — поплавок! IP67, 3200 мАч, плавает на воде.'},
+{id:368,brand:'BQ',model:'2439 Bobber',color:'Green',cat:'phone',ram:0,storage:0,price:3450,rating:4.5,reviews:14,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2439.jpg',
+ desc:'BQ 2439 Bobber Green.'},
+{id:369,brand:'BQ',model:'2439 Bobber',color:'Orange',cat:'phone',ram:0,storage:0,price:3450,rating:4.5,reviews:11,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2439.jpg',
+ desc:'BQ 2439 Bobber Orange.'},
+{id:370,brand:'BQ',model:'2440 Step L+',color:'Black',cat:'phone',ram:0,storage:0,price:1610,rating:4.1,reviews:13,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2440.jpg',
+ desc:'BQ 2440 Step L+ — крупные цифры, большой экран.'},
+{id:371,brand:'BQ',model:'2440 Step L+',color:'Black+Green',cat:'phone',ram:0,storage:0,price:1610,rating:4.1,reviews:10,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2440.jpg',
+ desc:'BQ 2440 Step L+ Black+Green.'},
+{id:372,brand:'BQ',model:'2440 Step L+',color:'White+Red',cat:'phone',ram:0,storage:0,price:1610,rating:4.1,reviews:8,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2440.jpg',
+ desc:'BQ 2440 Step L+ White+Red.'},
+{id:373,brand:'BQ',model:'2452 Energy',color:'Black',cat:'phone',ram:0,storage:0,price:2450,rating:4.3,reviews:19,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2452.jpg',
+ desc:'BQ 2452 Energy — ёмкий аккумулятор 5000 мАч.'},
+{id:374,brand:'BQ',model:'2452 Energy',color:'Black+Red',cat:'phone',ram:0,storage:0,price:2450,rating:4.3,reviews:14,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2452.jpg',
+ desc:'BQ 2452 Energy Black+Red.'},
+{id:375,brand:'BQ',model:'2452 Energy',color:'Blue+Black',cat:'phone',ram:0,storage:0,price:2450,rating:4.3,reviews:11,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2452.jpg',
+ desc:'BQ 2452 Energy Blue+Black.'},
+{id:376,brand:'BQ',model:'2452 Energy',color:'Red+Black',cat:'phone',ram:0,storage:0,price:2450,rating:4.3,reviews:9,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2452.jpg',
+ desc:'BQ 2452 Energy Red+Black.'},
+{id:377,brand:'BQ',model:'2455 Boom Quattro',color:'Black',cat:'phone',ram:0,storage:0,price:2470,rating:4.4,reviews:22,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2455.jpg',
+ desc:'BQ 2455 Boom Quattro — 4 динамика, мощный звук.'},
+{id:378,brand:'BQ',model:'2455 Boom Quattro',color:'Black+Blue',cat:'phone',ram:0,storage:0,price:2470,rating:4.4,reviews:17,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2455.jpg',
+ desc:'BQ 2455 Boom Quattro Black+Blue.'},
+{id:379,brand:'BQ',model:'2455 Boom Quattro',color:'Black+Gold',cat:'phone',ram:0,storage:0,price:2470,rating:4.4,reviews:14,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2455.jpg',
+ desc:'BQ 2455 Boom Quattro Black+Gold.'},
+{id:380,brand:'BQ',model:'2456 Pocket',color:'Black',cat:'phone',ram:0,storage:0,price:2630,rating:4.3,reviews:16,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2456.jpg',
+ desc:'BQ 2456 Pocket — ультракомпактный, умещается в любой карман.'},
+{id:381,brand:'BQ',model:'2456 Pocket',color:'Dark Blue',cat:'phone',ram:0,storage:0,price:2630,rating:4.3,reviews:12,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2456.jpg',
+ desc:'BQ 2456 Pocket Dark Blue.'},
+{id:382,brand:'BQ',model:'2456 Pocket',color:'Red',cat:'phone',ram:0,storage:0,price:2630,rating:4.3,reviews:9,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2456.jpg',
+ desc:'BQ 2456 Pocket Red.'},
+{id:383,brand:'BQ',model:'2458 Barrel L',color:'Black+Cold',cat:'phone',ram:0,storage:0,price:1800,rating:4.2,reviews:14,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2458.jpg',
+ desc:'BQ 2458 Barrel L — прочный, три SIM.'},
+{id:384,brand:'BQ',model:'2458 Barrel L',color:'Black+Silver',cat:'phone',ram:0,storage:0,price:1800,rating:4.2,reviews:11,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2458.jpg',
+ desc:'BQ 2458 Barrel L Black+Silver.'},
+{id:385,brand:'BQ',model:'2458 Barrel L',color:'Green+Black',cat:'phone',ram:0,storage:0,price:1800,rating:4.2,reviews:8,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2458.jpg',
+ desc:'BQ 2458 Barrel L Green+Black.'},
+{id:386,brand:'BQ',model:'2459 Care',color:'Black',cat:'phone',ram:0,storage:0,price:2000,rating:4.3,reviews:18,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2459.jpg',
+ desc:'BQ 2459 Care — кнопка SOS, большой шрифт, для пожилых.'},
+{id:387,brand:'BQ',model:'2459 Care',color:'Gray',cat:'phone',ram:0,storage:0,price:2000,rating:4.3,reviews:13,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2459.jpg',
+ desc:'BQ 2459 Care Gray.'},
+{id:388,brand:'BQ',model:'2459 Care',color:'Red',cat:'phone',ram:0,storage:0,price:2000,rating:4.3,reviews:10,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2459.jpg',
+ desc:'BQ 2459 Care Red.'},
+{id:389,brand:'BQ',model:'2810 Boom XL',color:'Золотой',cat:'phone',ram:0,storage:0,price:2640,rating:4.4,reviews:20,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2810.jpg',
+ desc:'BQ 2810 Boom XL — громкий звук, большой экран 2.8".'},
+{id:390,brand:'BQ',model:'2810 Boom XL',color:'Красный',cat:'phone',ram:0,storage:0,price:2640,rating:4.4,reviews:16,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2810.jpg',
+ desc:'BQ 2810 Boom XL Red.'},
+{id:391,brand:'BQ',model:'2810 Boom XL',color:'Серый',cat:'phone',ram:0,storage:0,price:2640,rating:4.4,reviews:13,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2810.jpg',
+ desc:'BQ 2810 Boom XL Gray.'},
+{id:392,brand:'BQ',model:'2817 Tank Quattro',color:'Blue',cat:'phone',ram:0,storage:0,price:2900,rating:4.5,reviews:24,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2817.jpg',
+ desc:'BQ 2817 Tank Quattro — 4 динамика + защита IP.'},
+{id:393,brand:'BQ',model:'2817 Tank Quattro',color:'Green',cat:'phone',ram:0,storage:0,price:2900,rating:4.5,reviews:19,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2817.jpg',
+ desc:'BQ 2817 Tank Quattro Green.'},
+{id:394,brand:'BQ',model:'2820 Step XL+',color:'Black',cat:'phone',ram:0,storage:0,price:1600,rating:4.1,reviews:18,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2820.jpg',
+ desc:'BQ 2820 Step XL+ — большой экран 2.8", удобно для глаз.'},
+{id:395,brand:'BQ',model:'2820 Step XL+',color:'Black+Blue',cat:'phone',ram:0,storage:0,price:1600,rating:4.1,reviews:13,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2820.jpg',
+ desc:'BQ 2820 Step XL+ Black+Blue.'},
+{id:396,brand:'BQ',model:'2820 Step XL+',color:'Black+Green',cat:'phone',ram:0,storage:0,price:1600,rating:4.1,reviews:10,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2820.jpg',
+ desc:'BQ 2820 Step XL+ Black+Green.'},
+{id:397,brand:'BQ',model:'2820 Step XL+',color:'Black+Orange',cat:'phone',ram:0,storage:0,price:1600,rating:4.1,reviews:8,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2820.jpg',
+ desc:'BQ 2820 Step XL+ Black+Orange.'},
+{id:398,brand:'BQ',model:'2820 Step XL+',color:'Black+Red',cat:'phone',ram:0,storage:0,price:1600,rating:4.1,reviews:11,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2820.jpg',
+ desc:'BQ 2820 Step XL+ Black+Red.'},
+{id:399,brand:'BQ',model:'2820 Step XL+',color:'White+Blue',cat:'phone',ram:0,storage:0,price:1600,rating:4.1,reviews:7,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2820.jpg',
+ desc:'BQ 2820 Step XL+ White+Blue.'},
+{id:400,brand:'BQ',model:'2820 Step XL+',color:'White+Red',cat:'phone',ram:0,storage:0,price:1600,rating:4.1,reviews:9,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2820.jpg',
+ desc:'BQ 2820 Step XL+ White+Red.'},
+{id:401,brand:'BQ',model:'2839 Point',color:'White',cat:'phone',ram:0,storage:0,price:3580,rating:4.5,reviews:14,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2839.jpg',
+ desc:'BQ 2839 Point White — стильный слайдер.'},
+{id:402,brand:'BQ',model:'2842 Disco Boom',color:'Black+Blue',cat:'phone',ram:0,storage:0,price:2750,rating:4.4,reviews:18,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2842.jpg',
+ desc:'BQ 2842 Disco Boom — Bluetooth-колонка + телефон в одном.'},
+{id:403,brand:'BQ',model:'2842 Disco Boom',color:'Blue+Black',cat:'phone',ram:0,storage:0,price:2750,rating:4.4,reviews:14,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2842.jpg',
+ desc:'BQ 2842 Disco Boom Blue+Black.'},
+{id:404,brand:'BQ',model:'2843 Air',color:'Dark Gray',cat:'phone',ram:0,storage:0,price:2300,rating:4.3,reviews:16,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2843.jpg',
+ desc:'BQ 2843 Air — тонкий слайдер, металл.'},
+{id:405,brand:'BQ',model:'2843 Air',color:'Gold',cat:'phone',ram:0,storage:0,price:2300,rating:4.3,reviews:12,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2843.jpg',
+ desc:'BQ 2843 Air Gold.'},
+{id:406,brand:'BQ',model:'2843 Air',color:'Silver',cat:'phone',ram:0,storage:0,price:2300,rating:4.3,reviews:10,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-2843.jpg',
+ desc:'BQ 2843 Air Silver.'},
+{id:407,brand:'BQ',model:'3590 Step XXL+',color:'Black',cat:'phone',ram:0,storage:0,price:2140,rating:4.2,reviews:19,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-3590.jpg',
+ desc:'BQ 3590 Step XXL+ — огромный экран 3.5", шрифт XXL.'},
+{id:408,brand:'BQ',model:'3590 Step XXL+',color:'Black+Blue',cat:'phone',ram:0,storage:0,price:2140,rating:4.2,reviews:14,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-3590.jpg',
+ desc:'BQ 3590 Step XXL+ Black+Blue.'},
+{id:409,brand:'BQ',model:'3590 Step XXL+',color:'Black+Green',cat:'phone',ram:0,storage:0,price:2140,rating:4.2,reviews:11,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-3590.jpg',
+ desc:'BQ 3590 Step XXL+ Black+Green.'},
+{id:410,brand:'BQ',model:'3590 Step XXL+',color:'Black+Red',cat:'phone',ram:0,storage:0,price:2140,rating:4.2,reviews:9,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-3590.jpg',
+ desc:'BQ 3590 Step XXL+ Black+Red.'},
+{id:411,brand:'BQ',model:'3598 Barrel XXL',color:'Black+Cold',cat:'phone',ram:0,storage:0,price:2250,rating:4.3,reviews:15,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-3598.jpg',
+ desc:'BQ 3598 Barrel XXL — большой защищённый телефон.'},
+{id:412,brand:'BQ',model:'3598 Barrel XXL',color:'Black+Silver',cat:'phone',ram:0,storage:0,price:2250,rating:4.3,reviews:12,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-3598.jpg',
+ desc:'BQ 3598 Barrel XXL Black+Silver.'},
+{id:413,brand:'BQ',model:'3598 Barrel XXL',color:'Green+Black',cat:'phone',ram:0,storage:0,price:2250,rating:4.3,reviews:9,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-3598.jpg',
+ desc:'BQ 3598 Barrel XXL Green+Black.'},
+{id:414,brand:'BQ',model:'3598 Barrel XXL',color:'Purple+Black',cat:'phone',ram:0,storage:0,price:2250,rating:4.3,reviews:7,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-3598.jpg',
+ desc:'BQ 3598 Barrel XXL Purple+Black.'},
+{id:415,brand:'BQ',model:'6761L Unit',color:'Black',cat:'phone',ram:0,storage:0,price:5500,rating:4.6,reviews:22,isNew:true,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/bq-6761l.jpg',
+ desc:'BQ 6761L Unit — большой экран 6.7", мощный аккумулятор, Android.'},
+
+// ── GAMING / ACCESSORIES ──
+{id:69,brand:'Sony',model:'PlayStation 5 Slim Disc 1TB',color:'White',cat:'gaming',ram:0,storage:1000,price:52500,rating:5.0,reviews:203,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/sony-playstation-5.jpg',
+ desc:'PlayStation 5 Slim — консоль нового поколения, Blu-ray, 1 ТБ SSD.'},
+{id:70,brand:'Sony',model:'DualSense Геймпад PS5',color:'White',cat:'accessory',ram:0,storage:0,price:8200,rating:4.8,reviews:77,isNew:false,sale:0,
+ img:'https://fdn2.gsmarena.com/vv/bigpic/sony-dualsense.jpg',
+ desc:'Sony DualSense — адаптивные триггеры, тактильная обратная связь.'}
+];
+
+
+const BRANDS = [...new Set(P.map(x=>x.brand))].sort();
+const CATS = [
+  {id:'all',n:'Все товары',ico:'🏪'},
+  {id:'smartphone',n:'Смартфоны',ico:'📱'},
+  {id:'phone',n:'Кнопочные',ico:'☎️'},
+  {id:'gaming',n:'Игровые',ico:'🎮'},
+  {id:'accessory',n:'Аксессуары',ico:'🔌'}
+];
+const REVIEWS = [
+  {a:'Магомед А.',r:5,t:'Отличный магазин! Взял Samsung S25 Ultra — всё быстро, оригинальный, гарантия есть. Рекомендую!',d:'15.03.2025'},
+  {a:'Хадижат М.',r:5,t:'Помогли выбрать телефон для мамы. Персонал вежливый, цены честные. Однозначно рекомендую.',d:'10.03.2025'},
+  {a:'Руслан Г.',r:4,t:'Взял Xiaomi Redmi Note 15 Pro. Забронировал онлайн, через час позвонили — готово. Очень удобно!',d:'05.03.2025'},
+  {a:'Залина К.',r:5,t:'Купила Realme Note 70 и Nokia для бабушки. Оба понравились, всё быстро и без проблем.',d:'28.02.2025'},
+  {a:'Тимур Б.',r:5,t:'Samsung Galaxy S26 Ultra — нашёл здесь дешевле чем везде. Гарантийный талон выдали.',d:'20.02.2025'},
+  {a:'Асет М.',r:5,t:'Приятное место, сразу нашли нужную модель. Оплатил переводом прямо в магазине. Спасибо!',d:'14.02.2025'}
+];
+const SAMPLE_ORDERS = [
+  {id:'#LS-0041',date:'15.03.2025',status:'done',total:44500,items:[{n:'Samsung Galaxy S25 FE 8/512 Navy',q:1,p:44500}]},
+  {id:'#LS-0038',date:'08.03.2025',status:'done',total:13890,items:[{n:'Xiaomi Redmi Note 14 6/128 Blue',q:1,p:11900},{n:'Samsung 65W Adapter',q:1,p:1990}]}
+];
+
+// ════════════════════════════════════════════
+//  APP STATE
+// ════════════════════════════════════════════
+let S = {
+  page:   'home',
+  cart:   JSON.parse(localStorage.getItem('lm_cart')||'[]'),
+  favs:   JSON.parse(localStorage.getItem('lm_favs')||'[]'),
+  user:   JSON.parse(localStorage.getItem('lm_user')||'null'),
+  theme:  localStorage.getItem('lm_theme')||'light',
+  filters:{brand:'',cat:'all',minP:0,maxP:200000,search:''},
+  sort:   'popular',
+  atab:   'dashboard',
+  aprods: P.slice(0,15)
+};
+
+// ════════════════════════════════════════════
+//  HELPERS
+// ════════════════════════════════════════════
+const fmt = n => n.toLocaleString('ru-RU') + ' ₽';
+const stars = r => '★'.repeat(Math.floor(r)) + '☆'.repeat(5-Math.floor(r));
+const $  = id => document.getElementById(id);
+const fallback = p => `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='200' height='200' fill='%23f5f5f5'/%3E%3Ctext x='100' y='105' text-anchor='middle' fill='%23999' font-size='14' font-family='Arial'%3E${encodeURIComponent(p.brand)}%3C/text%3E%3C/svg%3E`;
+
+function save(key,val){ localStorage.setItem('lm_'+key, JSON.stringify(val)); }
+function cartTotal(){ return S.cart.reduce((s,i)=>s+i.price*i.qty,0); }
+function cartCount(){ return S.cart.reduce((s,i)=>s+i.qty,0); }
+
+function updBadge(){
+  const n=cartCount(), b=$('cart-badge');
+  b.style.display = n ? 'flex' : 'none';
+  b.textContent = n;
+}
+
+function toast(msg, type='ok'){
+  const c=$('toast-cont');
+  const el=document.createElement('div');
+  el.className=`toast t-${type}`;
+  el.innerHTML=`<span>${type==='ok'?'✅':'❌'}</span>${msg}`;
+  c.appendChild(el);
+  setTimeout(()=>el.remove(), 2800);
+}
+
+// ════════════════════════════════════════════
+//  THEME
+// ════════════════════════════════════════════
+function applyTheme(){
+  document.documentElement.setAttribute('data-theme', S.theme);
+  $('theme-pill').textContent = S.theme==='light' ? '🌙 Тёмная' : '☀️ Светлая';
+}
+function toggleTheme(){
+  S.theme = S.theme==='light' ? 'dark' : 'light';
+  save('theme', S.theme); applyTheme();
+}
+
+// ════════════════════════════════════════════
+//  NAVIGATION
+// ════════════════════════════════════════════
+function nav(page){
+  S.page = page;
+  document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
+  const pg = $('page-'+page);
+  if(pg) pg.classList.add('active');
+  document.querySelectorAll('.nl').forEach(el=>el.classList.remove('on'));
+  const nl = $('nl-'+page);
+  if(nl) nl.classList.add('on');
+  window.scrollTo(0,0); closeCart();
+  if(page==='home')    renderHome();
+  if(page==='catalog') renderCatalog();
+  if(page==='profile') renderProfile();
+  if(page==='admin')   renderAdmin();
+}
+
+// ════════════════════════════════════════════
+//  CART
+// ════════════════════════════════════════════
+function addToCart(id){
+  const p=P.find(x=>x.id===id); if(!p) return;
+  const ex=S.cart.find(x=>x.id===id);
+  if(ex) ex.qty++; else S.cart.push({...p,qty:1});
+  save('cart',S.cart); updBadge(); renderCartDrawer();
+  toast(`«${p.model}» добавлен в корзину`);
+}
+function removeFromCart(id){ S.cart=S.cart.filter(x=>x.id!==id); save('cart',S.cart); updBadge(); renderCartDrawer(); }
+function changeQty(id,d){
+  const i=S.cart.find(x=>x.id===id); if(!i) return;
+  i.qty+=d; if(i.qty<1) removeFromCart(id); else { save('cart',S.cart); updBadge(); renderCartDrawer(); }
+}
+function openCart(){ $('cart-ov').classList.add('open'); $('cart-dr').classList.add('open'); renderCartDrawer(); }
+function closeCart(){ $('cart-ov').classList.remove('open'); $('cart-dr').classList.remove('open'); }
+
+function renderCartDrawer(){
+  const body=$('cart-body'), ft=$('cart-ft');
+  if(!S.cart.length){
+    body.innerHTML=`<div class="cart-empty"><div class="ce-ico">🛍</div><p>Корзина пуста</p><p style="font-size:11px;margin-top:4px">Добавьте товары из каталога</p></div>`;
+    ft.innerHTML=''; return;
+  }
+  body.innerHTML=S.cart.map(i=>`
+    <div class="cart-item">
+      <img src="${i.img}" alt="${i.model}" onerror="this.src='${fallback(i)}'">
+      <div class="ci-info">
+        <div class="ci-name">${i.brand} ${i.model}</div>
+        <div class="ci-meta">${i.color||''}${i.ram>0?' · '+i.ram+'/'+i.storage+' ГБ':''}</div>
+        <div class="qty-r">
+          <button class="qty-btn" onclick="changeQty(${i.id},-1)">−</button>
+          <span class="qty-n">${i.qty}</span>
+          <button class="qty-btn" onclick="changeQty(${i.id},1)">+</button>
+          <span style="font-size:11px;color:var(--text3);margin-left:4px">${fmt(i.price)}/шт</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+        <div class="ci-price">${fmt(i.price*i.qty)}</div>
+        <span class="ci-del" onclick="removeFromCart(${i.id})">✕</span>
+      </div>
+    </div>`).join('');
+  ft.innerHTML=`
+    <div class="cart-tr"><span style="font-size:13px;color:var(--text2)">Итого:</span><span class="cart-tn">${fmt(cartTotal())}</span></div>
+    <button class="btn btn-primary btn-full" style="border-radius:12px;margin-bottom:8px" onclick="openBook()">🛍 Забронировать товар</button>
+    <a href="https://wa.me/${STORE.wa}?text=${encodeURIComponent('Хочу забронировать: '+S.cart.map(i=>i.brand+' '+i.model+' × '+i.qty).join(', '))}"
+       target="_blank" class="btn btn-green btn-full" style="border-radius:12px;text-decoration:none">💬 Написать в WhatsApp</a>
+    <p style="font-size:11px;color:var(--text3);text-align:center;margin-top:8px">Оплата наличными или переводом в магазине</p>`;
+}
+
+// ════════════════════════════════════════════
+//  PRODUCT MODAL
+// ════════════════════════════════════════════
+function openProd(id){
+  const p=P.find(x=>x.id===id); if(!p) return;
+  const sale=p.sale ? Math.round(p.price*(1-p.sale/100)) : p.price;
+  $('prod-modal').innerHTML=`
+    <button class="mclose" onclick="closeProd()">✕</button>
+    <div class="ppg">
+      <div class="pgall">
+        <img src="${p.img}" alt="${p.brand} ${p.model}" onerror="this.src='${fallback(p)}'">
+      </div>
+      <div class="pinfo">
+        <div class="pib">${p.brand}</div>
+        <div class="pin">${p.model}</div>
+        <div class="psr">
+          <span style="color:#f59e0b;font-size:13px">${stars(p.rating)}</span>
+          <span style="color:var(--text3);font-size:12px">${p.rating} · ${p.reviews} отзывов</span>
+        </div>
+        <div class="pprice">${fmt(sale)}</div>
+        ${p.sale?`<div style="font-size:12px;color:var(--text3);text-decoration:line-through;margin-bottom:4px">${fmt(p.price)}</div>`:''}
+        ${p.color?`<div class="pclr">Цвет: <strong>${p.color}</strong></div>`:''}
+        <table class="spec-t">
+          ${p.ram>0?`<tr><td class="sl">ОЗУ</td><td class="sv">${p.ram} ГБ</td></tr>`:''}
+          ${p.storage>0?`<tr><td class="sl">Память</td><td class="sv">${p.storage>=1000?p.storage/1000+' ТБ':p.storage+' ГБ'}</td></tr>`:''}
+          <tr><td class="sl">Категория</td><td class="sv">${{smartphone:'Смартфон',phone:'Кнопочный',gaming:'Игровая консоль',accessory:'Аксессуар'}[p.cat]}</td></tr>
+          <tr><td class="sl">Гарантия</td><td class="sv">12 месяцев</td></tr>
+          <tr><td class="sl">Оплата</td><td class="sv">В магазине (нал. / перевод)</td></tr>
+          <tr><td class="sl">Наличие</td><td class="sv" style="color:var(--green)">✓ Есть в магазине</td></tr>
+        </table>
+        <div class="pickup-box">
+          <div class="pickup-title">📍 Самовывоз из магазина</div>
+          <div class="pickup-addr">${STORE.addr}<br>${STORE.addrShort}</div>
+          <div class="pickup-note">⚡ Готов через ${STORE.pickupH} час · Пн–Сб 10:00–17:30</div>
+        </div>
+        <div class="pqr">
+          <img src="${QR(STORE.mapsUrl)}" alt="QR маршрут" onerror="this.parentElement.style.display='none'">
+          <p>Отсканируй → маршрут в Яндекс Картах</p>
+        </div>
+        <div class="pactions">
+          <button class="btn btn-primary btn-full" style="border-radius:12px" onclick="addToCart(${p.id});closeProd()">+ Добавить в корзину</button>
+          <button class="btn btn-blue btn-full" style="border-radius:12px" onclick="addToCart(${p.id});closeProd();openBook()">🛍 Забронировать сейчас</button>
+          <a href="https://wa.me/${STORE.wa}?text=${encodeURIComponent('Хочу купить: '+p.brand+' '+p.model+' — '+fmt(sale))}"
+             target="_blank" class="btn btn-green btn-full" style="border-radius:12px;text-decoration:none">💬 Написать в WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    <div class="pdesc"><h4>Описание</h4><p>${p.desc}</p></div>`;
+  $('prod-ov').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeProd(){ $('prod-ov').classList.remove('open'); document.body.style.overflow=''; }
+function closeProdBg(e){ if(e.target.id==='prod-ov') closeProd(); }
+
+// ════════════════════════════════════════════
+//  BOOKING
+// ════════════════════════════════════════════
+let bookDone=false;
+function openBook(){
+  bookDone=false; renderBook();
+  $('book-ov').classList.add('open');
+  document.body.style.overflow='hidden';
+  closeCart();
+}
+function closeBook(){ $('book-ov').classList.remove('open'); document.body.style.overflow=''; }
+function closeBookBg(e){ if(e.target.id==='book-ov') closeBook(); }
+
+function renderBook(){
+  const box=$('book-box');
+  if(bookDone){
+    box.innerHTML=`
+      <button class="mclose" onclick="closeBook()">✕</button>
+      <div class="success-wrap">
+        <div class="succ-ico">✅</div>
+        <div class="succ-title">Товар забронирован!</div>
+        <div class="succ-sub">Мы перезвоним вам в течение 15 минут для подтверждения.<br>Через <strong>${STORE.pickupH} час</strong> можно приехать и забрать.</div>
+        <div class="succ-info">
+          <div class="si-row"><span class="si-l">Адрес:</span><span class="si-v">${STORE.addr}</span></div>
+          <div class="si-row"><span class="si-l">Ориентир:</span><span class="si-v">${STORE.addrShort}</span></div>
+          <div class="si-row"><span class="si-l">Режим работы:</span><span class="si-v">Пн–Сб: ${STORE.hoursWd}</span></div>
+          <div class="si-row"><span class="si-l">Оплата:</span><span class="si-v">Наличными или переводом</span></div>
+          <div class="si-row"><span class="si-l">Сумма:</span><span class="si-v" style="font-size:15px;font-weight:700">${fmt(cartTotal())}</span></div>
+        </div>
+        <div class="qr-big">
+          <img src="${QR(STORE.mapsUrl)}" alt="QR карта" onerror="this.parentElement.style.display='none'">
+          <p>Отсканируй QR — откроется маршрут в Яндекс Картах</p>
+        </div>
+        <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+          <a href="${STORE.mapsUrl}" target="_blank" class="btn btn-primary" style="border-radius:12px;text-decoration:none">🗺 Открыть карту</a>
+          <button class="btn btn-outline" style="border-radius:12px" onclick="closeBook();nav('home')">На главную</button>
+        </div>
+      </div>`;
+    return;
+  }
+  box.innerHTML=`
+    <button class="mclose" onclick="closeBook()">✕</button>
+    <div class="book-title">Бронирование товара</div>
+    <div class="book-sub">Заполните форму — мы перезвоним и подтвердим бронь. Товар будет ждать вас в магазине.</div>
+    <div class="cart-summary-box">
+      <strong>${fmt(cartTotal())}</strong><br>
+      <span>${S.cart.map(i=>i.brand+' '+i.model+' × '+i.qty).join(' · ')}</span>
+    </div>
+    <div class="form-group"><label class="form-label">Ваше имя *</label><input class="form-input" id="bo-name" placeholder="Магомед"></div>
+    <div class="form-group"><label class="form-label">Телефон * (WhatsApp)</label><input class="form-input" id="bo-phone" placeholder="+7 (928) 000-00-00"></div>
+    <div class="form-group"><label class="form-label">Комментарий</label><textarea class="form-input" id="bo-comment" placeholder="Любые пожелания..."></textarea></div>
+    <div class="pickup-box" style="margin-bottom:14px">
+      <div class="pickup-title">📍 Куда приехать</div>
+      <div class="pickup-addr">${STORE.addr}<br>${STORE.addrShort}</div>
+      <div class="pickup-note">💳 Оплата наличными или переводом при получении</div>
+    </div>
+    <button class="btn btn-primary btn-full" style="border-radius:12px;font-size:15px;padding:12px" onclick="placeBook()">
+      ✅ Подтвердить бронь
+    </button>`;
+}
+
+function placeBook(){
+  const n=$('bo-name')?.value?.trim(), ph=$('bo-phone')?.value?.trim();
+  if(!n||!ph){ toast('Заполните имя и телефон','err'); return; }
+  // ── Telegram notification ──
+  if(STORE.tgBot && STORE.tgChatId){
+    const comment = $('bo-comment')?.value?.trim();
+    const items = S.cart.map(i=>`• ${i.brand} ${i.model}${i.color?' ('+i.color+')':''} × ${i.qty} — ${fmt(i.price*i.qty)}`).join('\n');
+    const msg = `🛍 <b>НОВАЯ БРОНЬ!</b>\n\n` +
+      `👤 Имя: <b>${n}</b>\n` +
+      `📞 Телефон: <b>${ph}</b>\n` +
+      (comment ? `💬 Комментарий: ${comment}\n` : '') +
+      `\n📦 <b>Товары:</b>\n${items}\n\n` +
+      `💰 <b>Итого: ${fmt(cartTotal())}</b>\n` +
+      `📅 ${new Date().toLocaleString('ru-RU')}`;
+    fetch(`https://api.telegram.org/bot${STORE.tgBot}/sendMessage`, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({chat_id: STORE.tgChatId, text: msg, parse_mode:'HTML'})
+    }).catch(()=>{});
+  }
+  bookDone=true;
+  S.cart=[]; save('cart',S.cart); updBadge();
+  renderBook();
+}
+
+// ════════════════════════════════════════════
+//  SEARCH
+// ════════════════════════════════════════════
+function doSearch(q){
+  const d=$('sdrop');
+  if(!q.trim()){ d.classList.remove('open'); return; }
+  const res=P.filter(p=>
+    p.brand.toLowerCase().includes(q.toLowerCase())||
+    p.model.toLowerCase().includes(q.toLowerCase())||
+    (p.color&&p.color.toLowerCase().includes(q.toLowerCase()))
+  ).slice(0,5);
+  if(!res.length){ d.classList.remove('open'); return; }
+  d.innerHTML=res.map(p=>`
+    <div class="sdrop-item" onclick="openProd(${p.id});document.querySelector('.nav-search input').value='';document.getElementById('sdrop').classList.remove('open')">
+      <img src="${p.img}" onerror="this.src='${fallback(p)}'">
+      <div><div class="sdrop-name">${p.brand} ${p.model}</div><div class="sdrop-price">${fmt(p.price)}</div></div>
+    </div>`).join('');
+  d.classList.add('open');
+}
+document.addEventListener('click',e=>{ if(!$('search-wrap').contains(e.target)) $('sdrop').classList.remove('open'); });
+
+// ════════════════════════════════════════════
+//  PRODUCT CARD
+// ════════════════════════════════════════════
+function prodCard(p, showHit=false){
+  const sale=p.sale ? Math.round(p.price*(1-p.sale/100)) : p.price;
+  const isFav=S.favs.includes(p.id);
+  return `
+    <div class="prod-card" onclick="openProd(${p.id})">
+      <div class="prod-img-box">
+        <img src="${p.img}" alt="${p.brand} ${p.model}" loading="lazy"
+             onerror="this.onerror=null;this.src='${fallback(p)}'">
+        <div class="prod-badges">
+          ${p.isNew?'<span class="badge badge-new">Новинка</span>':''}
+          ${p.sale?`<span class="badge badge-sale">−${p.sale}%</span>`:''}
+          ${(showHit||p.reviews>100)?'<span class="badge badge-hit">🔥 Хит</span>':''}
+        </div>
+        <div class="prod-fav${isFav?' on':''}" onclick="event.stopPropagation();toggleFav(${p.id},this)">${isFav?'♥':'♡'}</div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-brand">${p.brand}</div>
+        <div class="prod-name">${p.model}</div>
+        ${p.color?`<div class="prod-meta">Цвет: ${p.color}</div>`:''}
+        ${p.ram>0?`<div class="prod-meta">${p.ram} ГБ RAM · ${p.storage} ГБ</div>`:''}
+        <div class="prod-stars">${stars(p.rating)}<span>${p.rating} (${p.reviews})</span></div>
+        <div class="prod-foot">
+          <div>
+            <div class="prod-price">${fmt(sale)}</div>
+            ${p.sale?`<div class="prod-price-old">${fmt(p.price)}</div>`:''}
+          </div>
+          <button class="add-btn" onclick="event.stopPropagation();addToCart(${p.id})" title="В корзину">+</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function toggleFav(id,el){
+  if(S.favs.includes(id)){ S.favs=S.favs.filter(x=>x!==id); el.classList.remove('on'); el.textContent='♡'; }
+  else { S.favs.push(id); el.classList.add('on'); el.textContent='♥'; }
+  save('favs',S.favs);
+}
+
+// ════════════════════════════════════════════
+//  HOME PAGE
+// ════════════════════════════════════════════
+function renderHome(){
+  const hits=P.filter(p=>p.reviews>80).slice(0,8);
+  const nw=P.filter(p=>p.isNew).slice(0,8);
+  const sale=P.filter(p=>p.sale>0);
+  const featured=P.filter(p=>p.isNew&&p.reviews>30).slice(0,4);
+
+  $('page-home').innerHTML=`
+    <div class="hero">
+      <div class="hero-in">
+        <div>
+          <div class="hero-tag">📍 г. Назрань, ул. Картоева, 154г · ТЦ «Ковчег»</div>
+          <h1>Смартфоны<br>в <em>Назрани</em></h1>
+          <p class="hero-sub">Samsung, Xiaomi, Realme, Nokia — официально, с гарантией.<br>
+            Брони онлайн — забирай через <strong>${STORE.pickupH} час</strong>, оплата в магазине.</p>
+          <div class="hero-btns">
+            <button class="btn btn-primary" onclick="nav('catalog')">Каталог товаров</button>
+            <a href="${STORE.mapsUrl}" target="_blank" class="btn btn-outline" style="text-decoration:none">🗺 Как добраться</a>
+          </div>
+          <div class="hero-stats">
+            ${[['70+','Товаров'],['500+','Клиентов'],[STORE.pickupH+'ч','Готов к выдаче'],['12 мес','Гарантия']].map(([n,l])=>`
+              <div><div class="hs-n">${n}</div><div class="hs-l">${l}</div></div>`).join('')}
+          </div>
+        </div>
+        <div class="hero-img">
+          ${featured.map(p=>`
+            <div class="hprod" onclick="openProd(${p.id})">
+              <img src="${p.img}" alt="${p.model}" onerror="this.src='${fallback(p)}'">
+              <div class="hp-brand">${p.brand}</div>
+              <div class="hp-name">${p.model.length>22?p.model.slice(0,22)+'…':p.model}</div>
+              <div class="hp-price">${fmt(p.price)}</div>
+            </div>`).join('')}
+        </div>
+      </div>
+    </div>
+
+    <div class="info-strip">
+      <div class="info-strip-in">💬 WhatsApp</a>
+        <span>⏰ Пн–Сб: 10:00–17:30 · Вс: выходной</span>
+        <</p>
+            <span style="color:rgba(255,255,255,.85);font-size:13px;font-weight:600">Смотреть →</span>
+          </div>
+          <div class="banner bn2" onclick="filterByCat('gaming')">
+            <div class="banner-deco">🎮</div>
+            <h3>PlayStation 5 Slim</h3>
+            <p>Disc Edition 1TB в наличии</p>
+            <span style="color:rgba(255,255,255,.85);font-size:13px;font-weight:600">Подробнее →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="cnt">
+        <div class="shd"><h2 class="stit">🔥 Хиты <em>продаж</em></h2><span class="see-all" onclick="nav('catalog')">Все →</span></div>
+        <div class="prod-grid">${hits.map(p=>prodCard(p,true)).join('')}</div>
+      </div>
+    </div>
+
+    <div class="sec" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+      <div class="cnt">
+        <div class="shd"><h2 class="stit">✨ <em>Новинки</em></h2><span class="see-all" onclick="nav('catalog')">Смотреть все →</span></div>
+        <div class="prod-grid">${nw.map(p=>prodCard(p)).join('')}</div>
+      </div>
+    </div>
+
+    ${sale.length?`
+    <div class="sec">
+      <div class="cnt">
+        <div class="shd"><h2 class="stit">🏷️ Телефоны <em>со скидкой</em></h2><span class="see-all" onclick="nav('catalog')">Все акции →</span></div>
+        <div class="prod-grid">${sale.map(p=>prodCard(p)).join('')}</div>
+      </div>
+    </div>`:''}
+
+    <div class="sec" style="background:var(--bg2);border-top:1px solid var(--border)">
+      <div class="cnt">
+        <div class="shd"><h2 class="stit">📍 Наш <em>магазин</em></h2></div>
+        <div class="store-grid">
+          <a href="${STORE.mapsUrl}" target="_blank" class="store-map-block" style="text-decoration:none">
+            <div class="map-grid-overlay"></div>
+            <div class="mpin-wrap">
+              <div class="mpin"><span>📍</span></div>
+              <div class="mpin-name">Loamanho Store</div>
+              <div class="mpin-addr">${STORE.addr}</div>
+              <span class="btn btn-blue btn-sm" style="border-radius:100px">🗺 Открыть в Яндекс Картах</span>
+            </div>
+          </a>
+          <div class="store-info-panel">
+            <h3>Информация</h3>
+            <div class="sir"><span class="sir-ico">📍</span>
+              <div><div class="sir-l">Адрес</div><div class="sir-v">${STORE.addr}<br><span style="font-size:11px;color:var(--text3)">${STORE.addrShort}</span></div></div>
+            </div>
+            <div class="sir"><span class="sir-ico">📞</span>
+              <div><div class="sir-l">Телефон</div>
+            style="color:var(--text);font-weight:60
+            <div class="sir"><span class="sir-ico">💬</span>
+              <div><div class="sir-l">WhatsApp</div>
+                <a href="https://wa.me/${STORE.wa}" target="_blank" class="btn btn-green btn-sm" style="border-radius:100px;text-decoration:none;margin-top:5px">Написать нам</a>
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>
+    </div>`;
+}
+
+function fbFormHTML(){
+  return`<div class="form-group"><label class="form-label">Имя</label><input class="form-input" id="fb-n" placeholder="Ваше имя"></div>
+  <div class="form-group"><label class="form-label">Телефон</label><input class="form-input" id="fb-p" placeholder="+7 (928) ..."></div>
+  <div class="form-group"><label class="form-label">Сообщение</label><textarea class="form-input" id="fb-m" placeholder="Ваш вопрос..."></textarea></div>
+  <button class="btn btn-primary" style="border-radius:12px" onclick="submitFb()">📨 Отправить</button>`;
+}
+function submitFb(){
+  if(!$('fb-n')?.value||!$('fb-p')?.value){ toast('Заполните имя и телефон','err'); return; }
+  $('fb-form').innerHTML=`<div style="text-align:center;padding:28px 0"><div style="font-size:44px;margin-bottom:10px">✅</div><div style="font-size:16px;font-weight:700">Отправлено!</div><p style="color:var(--text2);font-size:13px;margin-top:5px">Свяжемся с вами в течение часа</p></div>`;
+}
+function filterByBrand(b){ S.filters.brand=b; S.filters.cat='all'; nav('catalog'); }
+function filterByCat(c){ S.filters.cat=c; S.filters.brand=''; nav('catalog'); }
+
+// ════════════════════════════════════════════
+//  CATALOG PAGE
+// ════════════════════════════════════════════
+let stFilts=[], ramFilts=[];n false;
+    if(S.filters.brand&&p.brand!==S.filters.brand) return false;
+    if(stFilts.length&&!stFilts.includes(p.storage)) return false;
+    if(ramFilts.length&&!ramFilts.includes(p.ram)) return false;
+    if(p.price<S.filters.minP||p.price>S.filters.maxP) return false;
+    if(S.filters.search){ const q=S.filters.search.toLowerCase(); return p.brand.toLowerCase().includes(q)||p.model.toLowerCase().includes(q)||(p.color&&p.color.toLowerCase().includes(q)); }
+    return true;
+  });
+  const sf={popular:(a,b)=>b.reviews-a.reviews,new:(a,b)=>(b.isNew?1:0)-(a.isNew?1:0),cheap:(a,b)=>a.price-b.price,expensive:(a,b)=>b.price-a.price,rating:(a,b)=>b.rating-a.rating};
+  list=[...list].sort(sf[S.sort]||sf.popular);
+  const g=$('cat-grid'), rn=$('res-n');
+  if(g) g.innerHTML=list.length?list.map(p=>prodCard(p)).join(''):`<div class="empty-st" style="grid-column:1/-1"><div class="e-ico">🔍</div><div class="e-title">Ничего не найдено</div><div class="e-sub">Попробуйте изменить фильтры</div></div>`;
+  if(rn) rn.textContent=list.length+' товаров';
+}
+
+// ════════════════════════════════════════════
+//  PROFILE
+// ════════════════════════════════════════════
+function handleAuth(){ S.user ? nav('profile') : openAuth(); }
+function renderProfile(){
+  const pg=$('page-profile');
+  if(!S.user){
+    pg.innerHTML=`<div class="empty-st" style="margin-top:80px"><div class="e-ico" style="opacity:.3">👤</div><div class="e-title">Войдите в аккаунт</div><div class="e-sub">Для просмотра истории заказов</div><button class="btn btn-primary" style="border-radius:12px;margin-top:18px" onclick="openAuth()">Войти / Зарегистрироваться</button></div>`;
+    return;
+  }
+  pg.innerHTML=`<div class="profile-wrap">
+    <div class="profile-hd">
+      <div class="avatar">${S.user.name[0].toUpperCase()}</div>
+      <div><div class="pname">${S.user.name}</div><div class="pemail">${S.user.email}</div></div>
+      <button class="btn btn-outline btn-sm" style="margin-left:auto;border-radius:100px" onclick="logout()">Выйти</button>
+    </div>
+    <h3 style="margin-bottom:14px;font-size:16px;font-weight:700">История заказов</h3>
+    ${SAMPLE_ORDERS.map(o=>`
+      <div class="order-card">
+        <div class="order-hd">
+          <div><div class="order-id">${o.id}</div><div style="font-size:12px;color:var(--text3)">${o.date} · Самовывоз</div></div>
+          <span class="status-pill sp-${o.status}">${{done:'✓ Выдан',new:'Новый',ready:'Готов',cancel:'Отменён'}[o.status]}</span>
+        </div>
+        <div class="order-items">
+          ${o.items.map(i=>`<div class="oi-row"><span>${i.n} × ${i.q}</span><span style="color:var(--text);font-weight:600">${fmt(i.p*i.q)}</span></div>`).join('')}
+          <div class="order-total"><span>Итого</span><span>${fmt(o.total)}</span></div>
+        </div>
+      </div>`).join('')}
+  </div>`;
+}
+function logout(){ S.user=null; save('user',null); $('auth-btn').textContent='🔑'; renderProfile(); }
+
+// ════════════════════════════════════════════
+//  AUTH
+// ════════════════════════════════════════════
+let aTab='login';
+function openAuth(){ renderAuth(); $('auth-ov').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeAuth(){ $('auth-ov').classList.remove('open'); document.body.style.overflow=''; }
+function closeAuthBg(e){ if(e.target.id==='auth-ov') closeAuth(); }
+function renderAuth(){
+  $('auth-box').innerHTML=`
+    <button class="mclose" onclick="closeAuth()">✕</button>
+    <div style="font-size:17px;font-weight:800;margin-bottom:3px">Loamanho<em style="font-style:normal;color:var(--blue)">.</em></div>
+    <p style="font-size:12px;color:var(--text3);margin-bottom:18px">Управление заказами и история покупок</p>
+    <div class="auth-tabs">
+      <div class="auth-tab${aTab==='login'?' on':''}" onclick="aTab='login';renderAuth()">Войти</div>
+      <div class="auth-tab${aTab==='reg'?' on':''}" onclick="aTab='reg';renderAuth()">Регистрация</div>
+    </div>
+    ${aTab==='reg'?`<div class="form-group"><label class="form-label">Имя</label><input class="form-input" id="au-n" placeholder="Ваше имя"></div>`:''}
+    <div class="form-group"><label class="form-label">Email</label><input class="form-input" id="au-e" type="email" placeholder="email@example.com"></div>
+    <div class="form-group"><label class="form-label">Пароль</label><input class="form-input" id="au-p" type="password" placeholder="••••••••"></div>
+    <button class="btn btn-primary btn-full" style="border-radius:12px;font-size:15px;padding:11px" onclick="doAuth()">
+      ${aTab==='login'?'Войти':'Создать аккаунт'}
+    </button>
+    <div class="auth-footer">${aTab==='login'?`Нет аккаунта? <span onclick="aTab='reg';renderAuth()">Зарегистрируйтесь</span>`:`Уже есть аккаунт? <span onclick="aTab='login';renderAuth()">Войти</span>`}</div>`;
+}
+function doAuth(){
+  const e=$('au-e')?.value, pw=$('au-p')?.value, n=$('au-n')?.value||e?.split('@')[0];
+  if(!e||!pw){ toast('Заполните все поля','err'); return; }
+  S.user={name:n,email:e}; save('user',S.user);
+  $('auth-btn').textContent='👤';
+  toast(aTab==='login'?'Добро пожаловать!':'Аккаунт создан!');
+  closeAuth(); if(S.page==='profile') renderProfile();
+}
+
+// ════════════════════════════════════════════
+//  ADMIN
+// ════════════════════════════════════════════
+let adminOrders=[
+  {id:'#LS-0049',c:'Магомед А.',d:'04.04.2025',s:'new',  total:44500,t:'Samsung Galaxy S25 FE'},
+  {id:'#LS-0048',c:'Хадижат М.',d:'03.04.2025',s:'ready',total:12200,t:'Samsung Galaxy A17'},
+  {id:'#LS-0047',c:'Руслан Г.', d:'02.04.2025',s:'done', total:20800,t:'Redmi Note 15 Pro'},
+  {id:'#LS-0046',c:'Залина К.', d:'01.04.2025',s:'done', total:8450, t:'Realme Note 70'},
+  {id:'#LS-0045',c:'Тимур Б.',  d:'01.04.2025',s:'cancel',total:9650,t:'POCO C85'}
+];
+function renderAdmin(){
+  $('page-admin').innerHTML=`
+    <div class="admin-wrap">
+      <aside class="admin-sb">
+        <div class="admin-sb-t">Loamanho Admin</div>
+        ${[['dashboard','📊 Панель'],['products','📦 Товары'],['orders','📋 Заказы']].map(([id,lb])=>`
+          <div class="an-item${S.atab===id?' on':''}" onclick="S.atab='${id}';renderAdmin()">${lb}</div>`).join('')}
+        <div class="an-item" onclick="nav('home')" style="margin-top:auto;border-top:1px solid var(--border);padding-top:12px">← На сайт</div>
+      </aside>
+      <div class="admin-ct" id="admin-main"></div>
+    </div>`;
+  const m=$('admin-main');
+  if(S.atab==='dashboard') m.innerHTML=`
+    <div class="admin-title">📊 Панель управления</div>
+    <div class="stats-row">
+      ${[['Товаров',P.length,''],['Заказов','49','+12 за нед.'],['Выручка','1 240 000 ₽','+8%'],['Клиентов','127','+15 новых']].map(([l,v,d])=>`
+        <div class="stat-card"><div class="stat-l">${l}</div><div class="stat-v">${v}</div>${d?`<div class="stat-d">↑ ${d}</div>`:''}</div>`).join('')}
+    </div>
+    <h3 style="margin-bottom:12px;font-size:15px;font-weight:700">Последние заказы</h3>
+    <div style="background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r);overflow:auto">
+      <table class="data-t"><thead><tr><th>Заказ</th><th>Клиент</th><th>Товар</th><th>Сумма</th><th>Статус</th></tr></thead>
+      <tbody>${adminOrders.map(o=>`<tr>
+        <td style="color:var(--blue);font-weight:600">${o.id}</td><td>${o.c}</td>
+        <td style="color:var(--text2)">${o.t}</td><td style="font-weight:600">${fmt(o.total)}</td>
+        <td><span class="status-pill sp-${o.s}">${{new:'Новый',ready:'Готов',done:'✓ Выдан',cancel:'Отменён'}[o.s]}</span></td>
+      </tr>`).join('')}</tbody></table>
+    </div>`;
+
+  if(S.atab==='products') m.innerHTML=`
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
+      <div class="admin-title" style="margin:0">📦 Товары (${S.aprods.length})</div>
+      <button class="btn btn-primary btn-sm" style="border-radius:100px">+ Добавить</button>
+    </div>
+    <div style="background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r);overflow:auto">
+      <table class="data-t"><thead><tr><th>Фото</th><th>Модель</th><th>Бренд</th><th>Цена</th><th>★</th><th></th></tr></thead>
+      <tbody>${S.aprods.map(p=>`<tr>
+        <td><img class="t-img" src="${p.img}" onerror="this.src='${fallback(p)}'"></td>
+        <td><div style="font-weight:600">${p.model}</div><div style="font-size:11px;color:var(--text3)">${p.color||'—'}</div></td>
+        <td>${p.brand}</td><td style="font-weight:600">${fmt(p.price)}</td>
+        <td style="font-size:13px">${p.rating} (${p.reviews})</td>
+        <td style="display:flex;gap:5px;padding:10px 12px">
+          <button class="ab ab-e">✎</button>
+          <button class="ab ab-d" onclick="S.aprods=S.aprods.filter(x=>x.id!==${p.id});renderAdmin()">✕</button>
+        </td>
+      </tr>`).join('')}</tbody></table>
+    </div>`;
+
+  if(S.atab==='orders') m.innerHTML=`
+    <div class="admin-title">📋 Заказы</div>
+    <div style="background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r);overflow:auto">
+      <table class="data-t"><thead><tr><th>№</th><th>Клиент</th><th>Дата</th><th>Товар</th><th>Сумма</th><th>Статус</th><th>Изменить</th></tr></thead>
+      <tbody>${adminOrders.map((o,i)=>`<tr>
+        <td style="color:var(--blue);font-weight:600">${o.id}</td><td>${o.c}</td><td style="color:var(--text3)">${o.d}</td>
+        <td style="color:var(--text2)">${o.t}</td><td style="font-weight:600">${fmt(o.total)}</td>
+        <td><span class="status-pill sp-${o.s}">${{new:'Новый',ready:'Готов',done:'✓ Выдан',cancel:'Отменён'}[o.s]}</span></td>
+        <td><select style="background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:7px;padding:4px 8px;font-size:12px;font-family:inherit;cursor:pointer"
+          onchange="adminOrders[${i}].s=this.value;renderAdmin()">
+          ${['new','ready','done','cancel'].map(s=>`<option value="${s}"${o.s===s?' selected':''}>${{new:'Новый',ready:'Готов',done:'Выдан',cancel:'Отменён'}[s]}</option>`).join('')}
+        </select></td>
+      </tr>`).join('')}</tbody></table>
+    </div>`;
+}
+
+// ════════════════════════════════════════════
+// 
+
+// ── INIT ──
+applyTheme();
+updBadge();
+nav('home');
+</script>
+</body>
+</html>
